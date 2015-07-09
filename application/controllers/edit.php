@@ -55,9 +55,9 @@
 				'email'      => $this->input->post('email'),
 				'name'       => $this->input->post('comp_name')
 				);
-			$this->user_model->create_user($data_user);
-			$this->user_model->create_info($data_info);
-			$this->user_model->create_comp($data_comp);
+			$this->user_model->update_user($data_user);
+			$this->user_model->update_info($data_info);
+			$this->user_model->update_comp($data_comp);
 			
 
 			url::redirect('../user');
@@ -98,7 +98,7 @@
 	            'status'            =>  $this->input->post('status'),  
 	            'price'             =>  $amount = $this->input->post('price')
 	        );
-	        $this->supply_model->create($data_supply);
+	        $this->supply_model->update($data_supply);
 	        url::redirect('../supply');
 		}
 		// edit and save of request
@@ -130,7 +130,7 @@
 				'quantity'         =>  $this->input->post('quantity')
 			);
 			
-			$this->request_model->create($data);
+			$this->request_model->update($data);
 
 			url::redirect('../request');
 		}
@@ -149,12 +149,34 @@
 		// edit and save of promotion
 		public function edit_promotion()
 		{
+			$this->auto_render = FALSE;
+			$this->promotion_model = new Promotion_Model();
+			$promotion = $this->promotion_model->get_promotion($id);
 
+			$params = array(
+						'promotion_title'		=> $promotion->date_acquired,
+						'description' 			=> $promotion->number,
+						'start_date' 			=> $promotion->hardware_type,
+						'end_date'				=> $promotion->item
+						);
+			$this->template->body->content = View::factory('create_promotion', $params);	
 		}
 
 		public function save_promotion()
 		{
+			$this->auto_render   = FALSE;
+			$this->promotion_model = new Promotion_Model();
+			$data = array(
+				'promotion_title'	=> 	$this->input->post('promotion_title'),
+				'description'   	=> 	$this->input->post('date_requested'),
+				'start_date'    	=>  $this->input->post('start_date'),
+				'end_date'      	=>  $this->input->post('end_date'),
+				'status'        	=>  $this->input->post('status')
+			);
+			
+			$this->promotion_model->update($data);
 
+			url::redirect('promotion');
 		}
 
 	}

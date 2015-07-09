@@ -39,7 +39,7 @@ class Login_Controller extends Public_Template_Controller {
                         'firstname'  => $get_user->firstname,
                         'lastname'   => $get_user->lastname
                 ));
-                url::redirect('admin/dashboard');
+                url::redirect('dashboard');
                 } 
                 else
                 {
