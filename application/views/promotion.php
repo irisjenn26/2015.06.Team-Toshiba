@@ -25,7 +25,6 @@
 		<table id="dataTable" class="display">
 			<thead>
                 <tr>
-                    <th></th>
                     <th>ID</th>
                     <th>Start Date</th>
                     <th>End Date</th>
@@ -48,9 +47,9 @@
             </tbody>
 		</table>
         <script type="text/javascript">
-//        $(document).ready(function(){
-//            $('#dataTable').dataTable();    
-//        });
+        $(document).ready(function(){
+            $('#dataTable').dataTable();    
+        });
         $( "#accordion" ).accordion({collapsible: true,active: false});
     </script>
 	</div>

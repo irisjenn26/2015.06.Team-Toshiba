@@ -35,7 +35,7 @@ class Sales_Model extends Model
     {
         $this->db->select('*');
         $this->db->from($this->sales_table);
-        $this->db->join($this->requests_table, 'tbl_request.id');
+        $this->db->join($this->requests_table, 'tbl_requests.id');
         $this->db->join($this->users_table,'tbl_users.id');
         $query = $this->db->get();
         return $query->result_array();

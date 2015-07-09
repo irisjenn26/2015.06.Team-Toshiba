@@ -17,6 +17,6 @@
                         echo $error; ?>
                 <?php echo form::close_fieldset();
                       echo form::close(); 
-                      echo html::anchor('admin/user/show_client', 'sign up')?>
+                      echo html::anchor('../user/show_client', 'sign up')?>
             </div>
         </div>

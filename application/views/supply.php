@@ -1,7 +1,7 @@
 <div id="accordion">
 <h3>Add New Inventory</h3>
 <div>
-        <?php echo form::open('admin/supply/create_supply', array('class' => '', 'method'=>'POST')); ?> 
+        <?php echo form::open('../supply/create_supply', array('class' => '', 'method'=>'POST')); ?> 
         <?php echo form::open_fieldset(array('id' => 'form_field'));?><br/>
             <?php echo form::open_fieldset(array('class' => ''));?><br/>
             <?php echo form::legend('Add New Supply',array('id' => 'supply_legend', 'class' => '')); ?>
@@ -82,6 +82,7 @@
                     <th>Manufacturer</th>
                     <th>Available Stocks</th>
                     <th>Price</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>    
@@ -95,10 +96,11 @@
                     echo "<td>" . $supply->manufacturer . "</td>";
                     echo "<td>" . $supply->number_of_supply . "</td>";
                     echo "<td>" . $supply->price . "</td>";
+                    echo "<td><button id='delete'>delete</button>
+                          <button id='edit'>edit</button></td>";
                     echo "</tr>";
 
 			}
-var_dump($supplies_list);
 		?>
             </tbody>
 		</table>

@@ -8,8 +8,8 @@ function __construct(){
 	parent::__construct();
 	
 	//$this->template->scripts = script();
-    $this->template->body->content = View::factory('client/register');
-    $this->template->body->content = view::factory('admin/user_list');
+    //$this->template->body->content = View::factory('client/register');
+    $this->template->body->content = view::factory('user_list');
     //$this->template->body->content .= View::factory('client/register')->render(TRUE);
 	
 }
@@ -26,7 +26,7 @@ function __construct(){
 	 public function show_user()
 	{
 		$this->template->title = 'User Registration';
-		$this->template->body->content = View::factory('admin/create_user');
+		$this->template->body->content = View::factory('create_user');
 
 	}
 	
@@ -35,7 +35,7 @@ function __construct(){
         $this->user_model = new User_Model();
         $users_list = $this->user_model->get_users();
       
-        $this->template->body->content = View::factory('admin/user_list')
+        $this->template->body->content = View::factory('user_list')
              ->set('users_list', $users_list);
    }
    
@@ -53,7 +53,7 @@ function __construct(){
 		$data_user = array(
 			'firstname' =>  $this->input->post('firstname'),
 			'lastname'  =>  $this->input->post('lastname'),
-			//'group_id'  =>  $this->input->post('acct_type'),
+			'group_id'  =>  $this->input->post('acct_type'),
 			'address'   =>  $this->input->post('address'),
 			'password'  =>  $this->input->post('password'),
 			'username'  =>  $this->input->post('username'), 
@@ -61,7 +61,7 @@ function __construct(){
 		$repassword = $this->input->post('repassword');
 		$this->user_model->create_user($data_user);
 		
-		url::redirect('admin/user');
+		url::redirect('user');
 	}
 	
 public function create_client()
@@ -71,7 +71,7 @@ public function create_client()
 		$data_user = array(
 			'firstname' =>  $this->input->post('firstname'),
 			'lastname'  =>  $this->input->post('lastname'),
-			//'group_id'  =>  $this->input->post('acct_type'),
+			'group_id'  =>  $this->input->post('acct_type'),
 			'address'   =>  $this->input->post('address'),
 			'password'  =>  $this->input->post('password'),
 			'username'  =>  $this->input->post('username'), 
@@ -95,6 +95,6 @@ public function create_client()
 		$this->user_model->create_comp($data_comp);
 		
 
-		url::redirect('client/user');
+		url::redirect('user');
 	}
 }

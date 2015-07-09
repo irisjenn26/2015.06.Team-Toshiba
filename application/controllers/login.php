@@ -14,6 +14,13 @@ class Login_Controller extends Public_Template_Controller {
         $this->template->body = View::factory('login');
 	}
     
+    public function logout()
+    {
+            $this->session = Session::instance();
+            $this->session->destroy();
+            url::redirect('login');
+    }
+    
     public function process_login()
     {   
         $this->auto_render = FALSE;

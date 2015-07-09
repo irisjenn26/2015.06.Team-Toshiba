@@ -21,13 +21,13 @@ class Sales_Controller extends Private_Template_Controller
 
         $sales_list = $this->sales_model->get_sales();
         
-        $this->template->body->content = View::factory('admin/sales')
+        $this->template->body->content = View::factory('sales')
                                            ->set('sales_list', $sales_list);
     }
     public function show_add()
     {
         $this->template->title = 'New Invoice';
-        $this->template->body->content = View::factory('admin/create_invoice');
+        $this->template->body->content = View::factory('create_invoice');
 
     } 
 
@@ -44,7 +44,7 @@ class Sales_Controller extends Private_Template_Controller
             'status'            =>  $this->input->post('status')
         );
         $this->sales_model->create($data_sales);
-        url::redirect('admin/sales');
+        url::redirect('../sales');
     }
 }
 ?>

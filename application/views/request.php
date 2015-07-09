@@ -3,7 +3,7 @@
 	<div id = "accordion">
     <h3> Request </h3>
     <div>
-        <?php echo form::open('client/request/request_supply') ?>
+        <?php echo form::open('../request/request_supply') ?>
         <fieldset>
             <legend>Request Information</legend>
             <fieldset>

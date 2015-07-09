@@ -16,13 +16,13 @@ class Request_Controller extends Private_Template_Controller {
         $this->request_model = new Request_Model();
         $requests_list = $this->request_model->get_requests();
       
-        $this->template->body->content = View::factory('admin/request')
+        $this->template->body->content = View::factory('request')
                 ->set('requests_list', $requests_list);
     }
     public function show_add()
     {
         $this->template->title = 'New Request';
-        $this->template->body->content = View::factory('admin/create_request');
+        $this->template->body->content = View::factory('create_request');
 
     } 
     
@@ -40,6 +40,6 @@ class Request_Controller extends Private_Template_Controller {
 		
 		$this->request_model->create($data);
 
-		url::redirect('admin/request');
+		url::redirect('../request');
 	}
 }

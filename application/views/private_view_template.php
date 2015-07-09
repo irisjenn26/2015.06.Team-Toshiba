@@ -8,7 +8,7 @@
      <div id="tooplate_body_wrapper">
         <div id="tooplate_wrapper">
             <div id="tooplate_top_bar">
-                <a class="logout" href="http://localhost/OJT/logout">Log Out</a>
+                <a class="logout" href="../toshiba/login/logout">Log Out</a>
             </div>	
             <?=View::factory("includes/header")->render(true)?>
             <div id="tooplate_middle_subpage">
