@@ -10,7 +10,7 @@ var showDashboard = {
 	loadDashboard: function(){
 		$.ajax({
 			type: 'POST',
-				url:'',
+				url:'http://localhost/toshiba/dashboard',
 				dataType: 'JSON',
 				success: function(data){
 					$("#total_income").html(data.total);

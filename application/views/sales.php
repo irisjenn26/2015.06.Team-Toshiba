@@ -29,6 +29,7 @@
 		?>
             </tbody>
 		</table>
+        <?php echo util::test()?>
        <script type="text/javascript">
         $(document).ready(function(){
             $('#dataTable').dataTable().makeEditable();    

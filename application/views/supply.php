@@ -96,8 +96,8 @@
                     echo "<td>" . $supply->manufacturer . "</td>";
                     echo "<td>" . $supply->number_of_supply . "</td>";
                     echo "<td>" . $supply->price . "</td>";
-                    echo "<td><button id='delete'>delete</button>   
-                          <button id='edit'>edit</button></td>";
+                    echo "<td><button id='delete' class='.btn'>delete</button>   
+                          <button id='edit'class='.btn'>edit</button></td>";
                     echo "</tr>";
 
 			}
