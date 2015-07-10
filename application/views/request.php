@@ -3,17 +3,22 @@
 	<div id = "accordion">
     <h3> Request </h3>
     <div>
-        <?php echo form::open('../request/request_supply') ?>
+        <?php echo form::open('/request/create_request') ?>
         <fieldset>
             <legend>Request Information</legend>
             <fieldset>
                 <?php echo form::label('label1','Date Requested: '); ?>                 
-                <input type="date" id="date_requested" name="date_requested"><br/><br/>
+                <input type="date" id="date_requested" name="date_requested">&nbsp
                 <?php echo form::label('label2','Date Needed: '); ?>
                 <input type="date" id="date_needed" name="date_needed"><br/><br/>
-                <?php echo form::label('label3','Delivery Address: '); ?>               
-                <?php echo form::input('delivery_address'); ?><br/><br/>
-                <?php echo form::submit('submit','submit'); ?>
+                <?php echo form::label('label3','Delivery Address: ');              
+                      echo form::input('delivery_address');?> &nbsp
+                <?php echo form::label('label4', 'Item: ');
+                      echo form::input('request_item');?>
+                      <br/><br/>
+                <?php echo form::label('label5', 'Amount: ')?>
+                      <input type='number' id='quantity' class='width-25' name='quantity' min='1'/>&nbsp &nbsp &nbsp
+                <?php  echo form::submit('submit','submit','class ="btn"'); ?>
             </fieldset>
         </fieldset>
         <?php form::close() ?>      
