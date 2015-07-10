@@ -14,14 +14,17 @@ function __construct(){
 	parent::__construct();
 	
    //load Javascript files array.
-   $this->template->styles .= html::stylesheet( array ( 'media/css/jquery-ui.css',
-                                                        '/media/css/jquery.dataTables.css'),
+   $this->template->styles .= html::stylesheet( array ( '/media/css/jquery-ui.css',
+                                                        '/media/css/jquery.dataTables.css',
+                                                        'media/css/jquery.lightbox-0.5.css'),
 											                          array ( 'screen',
+                                                        'screen',
                                                         'screen'),
                                                 FALSE);
    // Load Javascript files array.
    $this->template->scripts .= html::script( array ( 'media/js/jquery-ui.js',
-                                                     'media/js/jquery.dataTables.js'), 
+                                                     'media/js/jquery.dataTables.js',
+                                                     'media/js/jquery.lightbox-0.5.js'), 
                                              FALSE);
    // Get current session information.
    $this->session = Session::instance()->get();
