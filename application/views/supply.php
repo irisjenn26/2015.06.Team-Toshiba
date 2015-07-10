@@ -1,7 +1,7 @@
 <div id="accordion">
 <h3>Add New Inventory</h3>
 <div>
-        <?php echo form::open('../supply/create_supply', array('class' => '', 'method'=>'POST')); ?> 
+        <?php echo form::open('/supply/create_supply', array('class' => '', 'method'=>'POST')); ?> 
                 <?php echo form::legend('Add New Supply',array('id' => 'supply_legend', 'class' => '')); ?>
                 
                 <?php echo form::label(array('for' => 'label1', 'class' => ''),'Date Acquired: ');?>
@@ -109,9 +109,9 @@
                           active: false
         });
         
-        $( 'button.edit' ).click(function(id){
-            location.href="supply/update_supply";
-        });
+        //$( 'button.edit' ).click(function(id){
+        //    location.href="supply/update_supply";
+        //});
     </script>
 	</div>
 </div>
