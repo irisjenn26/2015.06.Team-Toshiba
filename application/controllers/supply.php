@@ -52,6 +52,11 @@ class Supply_Controller extends Private_Template_Controller
         url::redirect('supply');
     }
 
+    public function update_supply(){
+        $this->template->title = 'Edit Supply';
+        $this->template->body->content = View::factory('update_supply');        
+    }
+
     public function deduct_supply()
     {
         //if()

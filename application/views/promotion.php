@@ -39,8 +39,10 @@
                 {
                     echo "<tr>";
                     echo "<td>" . $promotion->id . "</td>";
-                    echo "<td>" . $promotion->start_date . "</td>";
-                    echo "<td>" . $promotion->end_date . "</td>";
+                    $date = new DateTime($promotion->start_date);
+                    echo "<td>" .$date->format('F j Y'). '</td>';
+                    $date2 = new DateTime($promotion->end_date);
+                    echo "<td>" .$date2->format('F j Y'). '</td>';
                     echo "<td>" . $promotion->status . "</td>";
                     echo "</tr>";
 

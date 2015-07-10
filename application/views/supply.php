@@ -2,9 +2,7 @@
 <h3>Add New Inventory</h3>
 <div>
         <?php echo form::open('../supply/create_supply', array('class' => '', 'method'=>'POST')); ?> 
-        <?php echo form::open_fieldset(array('id' => 'form_field'));?><br/>
-            <?php echo form::open_fieldset(array('class' => ''));?><br/>
-            <?php echo form::legend('Add New Supply',array('id' => 'supply_legend', 'class' => '')); ?>
+                <?php echo form::legend('Add New Supply',array('id' => 'supply_legend', 'class' => '')); ?>
                 
                 <?php echo form::label(array('for' => 'label1', 'class' => ''),'Date Acquired: ');?>
                     
@@ -36,9 +34,8 @@
                                       'Pending' => 'Pending');
                       echo form::dropdown('status',$sample3,'pending'); 
                 ?>
-                <br>
-                <br>
-                <?php echo form::label(array('for' => 'label2', 'class' => ''), 'Hardware Type: ');?>
+                &nbsp                
+                <?php echo form::label(array('for' => 'label2', 'class' => ''), 'Hardware: ');?>
                 <?php   $sample = array('graphics card' => 'Graphics Card', 
                                       'power supply unit' => 'Power Supply Unit',
                                       'computer cases' => 'Computer Cases',
@@ -55,16 +52,13 @@
                                       'Non-Refillable Liquid Cooling' => 'Non-Refillable Liquid Cooling',
                                       'Refillable Liquid Cooling Kits' => 'Refillable Liquid Cooling Kits');
                       echo form::dropdown('hardware_type',$sample,'graphics card');?> 
-               
-               
-                <br/>
-                <br/>
-                
+                <br />
+                <br />          
                 <?php echo form::label(array('for' => 'label4', 'class' => ''), 'Description: ');?>
-                <?php echo form::textarea('description','description', 'rows ="5" cols="50"')?>                
+                <?php echo form::textarea('description')?>                
                 <br/>
                 <?php echo form::submit('submit', 'submit', 'class="btn"') ?>  
-            <?php echo form::close_fieldset();?><br/>             
+     <br/>             
 <?php form::close() ?>      
         </div>          
     
@@ -95,9 +89,9 @@
                     echo "<td>" . $supply->hardware_type . "</td>";
                     echo "<td>" . $supply->manufacturer . "</td>";
                     echo "<td>" . $supply->number_of_supply . "</td>";
-                    echo "<td>" . $supply->price . "</td>";
+                    echo "<td> Php" . number_format($supply->price,2,",",".") . "</td>";
                     echo "<td><button id='delete'>delete</button>   
-                          <button id='edit' class='edit' onclick='clickFunction()'>edit</button></td>";
+                          <button id='edit' class='edit'>edit</button></td>";
                     echo "</tr>";
 
 			}
@@ -105,34 +99,17 @@
             </tbody>
 		</table>
        <script type="text/javascript">
-        function clickFunction(){
-          location.href='#update_supply';
-        }
-
         $(document).ready(function(){
-            $('#dataTable').dataTable().makeEditable();    
+            $('#dataTable').dataTable()    
         });
-		    
-        $( "#accordion" ).accordion({collapsible: true,active: false,});
+        $( "#accordion" ).accordion({
+                          heightStyle: "content",
+                          collapsible: true,
+                          active: false
+        });
         
-        $(document).ready(function() {
-          $('.edit').magnificPopup({
-            type: 'inline',
-            preloader: false,
-            focus: '#name',
-
-            // When elemened is focused, some mobile browsers in some cases zoom in
-            // It looks not nice, so we disable it:
-              callbacks: {
-              beforeOpen: function() {
-                if($(window).width() < 700) {
-                  this.st.focus = false;
-                } else {
-                  this.st.focus = '#name';
-                }
-              }
-            }
-          });
+        $( 'button.edit' ).click(function(id){
+            location.href="supply/update_supply?id="+id;
         });
     </script>
 	</div>

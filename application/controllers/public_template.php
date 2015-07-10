@@ -18,7 +18,6 @@ class Public_Template_Controller extends Template_Controller {
         //load javascript files array.
         $this->template->scripts = html::script(array(
             'media/js/jquery-1.11.3.js',
-            'media/js/jquery.js',
             'media/js/jquery.nivo.slider.js'), 
             FALSE);
 

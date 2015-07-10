@@ -44,7 +44,8 @@
                 {
                     echo "<tr>";
                     echo "<input type='checkbox' name='vehicle' value='Bike'/>";
-                    echo "<td>" . $request->date_requested . "</td>";
+                    $date = new DateTime($request->date_requested);
+                    echo "<td>" .$date->format('F j Y'). '</td>';
                     echo "<td>" . $request->firstname . " " . $request->lastname . "</td>";
                     echo "<td>" . $request->request_title . "</td>";
                     echo "<td>" . $request->request_type . "</td>";

@@ -35,20 +35,27 @@ class Login_Controller extends Public_Template_Controller {
                 {
                 $this->session->set(array(
                         'id'         => $get_user->id,
+                        'group_id'   => $get_user->group_id,
                         'username'   => $get_user->username,
                         'firstname'  => $get_user->firstname,
                         'lastname'   => $get_user->lastname
                 ));
-                url::redirect('dashboard');
+                if($get_user->group_id == 1)
+                    url::redirect('dashboard');
+                
+                else
+                     url::redirect('supply');
                 } 
                 else
                 {
                     $error = 'Password Incorrect';
+                    echo javascript::alert($error);
                 }
             }
             else if (! $username && ! $password)
             {
                     $error = ' Please Input Username and Password';
+                    //echo javascript::alert(' Please Input Username and Password');
             }
             else
             {

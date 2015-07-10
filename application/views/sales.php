@@ -17,11 +17,12 @@
                 foreach($sales_list as $sale)
                 {
                     echo "<tr>";
-                    echo "<td>" . $sale->date_purchased . "</td>";
+                    $date = new DateTime($request->$sale->date_purchased);
+                    echo "<td>" .$date->format('F j Y'). '</td>';
                     echo "<td>" . $sale->firstname . " " . $sale->lastname ."</td>";
                     echo "<td>" . $sale->number_of_supply . "</td>";
                     echo "<td>" . $sale->item . "</td>";
-                    echo "<td>" . $sale->total_amount . "</td>";
+                    echo "<td>" . number_format($sale->total_amount,2,",",".") . "</td>";
                     echo "<td>" . $sale->status . "</td>";
                     echo "</tr>";
 
