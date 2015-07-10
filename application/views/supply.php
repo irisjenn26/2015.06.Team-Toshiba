@@ -102,6 +102,7 @@
         $(document).ready(function(){
             $('#dataTable').dataTable()    
         });
+
         $( "#accordion" ).accordion({
                           heightStyle: "content",
                           collapsible: true,
@@ -109,7 +110,7 @@
         });
         
         $( 'button.edit' ).click(function(id){
-            location.href="supply/update_supply?id="+id;
+            location.href="supply/update_supply";
         });
     </script>
 	</div>

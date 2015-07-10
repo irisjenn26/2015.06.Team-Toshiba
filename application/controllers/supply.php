@@ -59,7 +59,13 @@ class Supply_Controller extends Private_Template_Controller
 
     public function deduct_supply()
     {
-        //if()
+        // $list_supply = $this->supply_model->read('id');
+        // $list_request = $this->request_model->read('id');
+        // if(array_search('approved',))
+        // {
+
+        // }
+
     }
 }
 ?>

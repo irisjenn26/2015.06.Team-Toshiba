@@ -40,6 +40,6 @@ class Request_Controller extends Private_Template_Controller {
 		
 		$this->request_model->create($data);
 
-		url::redirect('../request');
+		url::redirect('/request');
 	}
 }
