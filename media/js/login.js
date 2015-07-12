@@ -23,7 +23,7 @@ Login =
             Login.process();
         });
     }
-}
+};
 
 $(document).ready(function(){
     Login.click_event();

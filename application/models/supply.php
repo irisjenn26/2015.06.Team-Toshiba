@@ -31,6 +31,7 @@ class Supply_Model extends Model
     {
         $this->db->select('*');
         $this->db->from($this->supply_table);
+        $this->db->where('tbl_supplies.del_status','active');
         $query = $this->db->get();
         return $query->result_array();
     }

@@ -27,7 +27,7 @@
 		<table id="dataTable" class="display">
 			<thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Promotion Title</th>
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Status</th>
@@ -38,7 +38,7 @@
                 foreach($promotions_list as $promotion)
                 {
                     echo "<tr>";
-                    echo "<td>" . $promotion->id . "</td>";
+                    echo "<td>" . $promotion->promotion_title . "</td>";
                     $date = new DateTime($promotion->start_date);
                     echo "<td>" .$date->format('F j Y'). '</td>';
                     $date2 = new DateTime($promotion->end_date);

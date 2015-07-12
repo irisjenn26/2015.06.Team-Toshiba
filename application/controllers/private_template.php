@@ -36,7 +36,7 @@ function __construct(){
    $this->session = Session::instance()->get();
    
    //load title and the view, private_view_template.
-   $this->template->title = '';
+
    $this->template->body = View::factory('private_view_template');
 }
 

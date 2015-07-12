@@ -36,5 +36,5 @@ class Request_Model extends Model {
         $query = $this->db->get();
         return $query->result_array();
     }
-
 }
+?>

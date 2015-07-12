@@ -23,7 +23,7 @@ Create_client =
         
         $.ajax({
             type: 'POST',
-                url: 'http://localhost/kohana/index.php/create_request/process_createrequest',
+                url: 'http://localhost/toshiba/user/create_user',
                 data: {firstname: firstname, lastname: lastname, email: email, 
                         address: address, town_city: town_city, 
                         postal_code: postal_code, comp_address: comp_address, username:username,

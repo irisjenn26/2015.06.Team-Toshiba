@@ -27,10 +27,13 @@ class Login_Controller extends Public_Template_Controller {
         $username    = $this->input->post('username');
         $this->user_model = new Tbl_User_Model();
         $get_user    = $this->user_model->get_user($username);
+        
         $password    = $this->input->post('password');    
-            if ($get_user->loaded == TRUE)
-            {
+           // if ($get_user->loaded == TRUE)
+            //{
+           
                 $pass = $get_user->password;
+                
                 if($pass == $password)
                 {
                 $this->session->set(array(
@@ -38,9 +41,12 @@ class Login_Controller extends Public_Template_Controller {
                         'group_id'   => $get_user->group_id,
                         'username'   => $get_user->username,
                         'firstname'  => $get_user->firstname,
-                        'lastname'   => $get_user->lastname
+                        'lastname'   => $get_user->lastname,
+                        'permission' => $get_user->permission
                 ));
-                if($get_user->group_id == 1)
+                $permission =$_SESSION['permission'];
+                $perArr = json_decode($permission,true);
+                if(in_array("Can_view_Dashboard",$perArr))
                     url::redirect('dashboard');
                 
                 else
@@ -51,15 +57,15 @@ class Login_Controller extends Public_Template_Controller {
                     $error = 'Password Incorrect';
                     echo javascript::alert($error);
                 }
-            }
-            else if (! $username && ! $password)
-            {
+            /*}
+            //else if (! $username && ! $password)
+          //  {
                     $error = ' Please Input Username and Password';
                     //echo javascript::alert(' Please Input Username and Password');
             }
             else
             {
                     $error = 'Username Incorrect';
-            }
+            }*/
     }
 }

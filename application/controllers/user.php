@@ -2,6 +2,7 @@
 class User_Controller extends Private_Template_Controller {
 
 	private $user_model;
+        private $user_edit_model;
 
 	
 function __construct(){
@@ -97,4 +98,22 @@ public function create_client()
 
 		url::redirect('user');
 	}
+        
+         public function show_update_editor($id)
+    {
+        
+        $user_data = $this->user_model->read($id);
+        $this->template->body->content =view::factory('update_user',$user_data);
+    }
+
+    public function update()
+    {   $user_edit_model = new Tbl_User_Model();
+                $firstname      = $this->input->post('firstname');
+                $lastname       = $this->input->post('lastname');
+                $address        = $this->input->post('address');
+                $del_status        = $this->input->post('del_status');
+            
+        $user_edit_model->update($this->input->post('id'),$firstname, $lastname, $address, $del_status);
+        url::redirect('user_list');
+    }
 }

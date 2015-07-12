@@ -1,5 +1,5 @@
 <div id="create_supply">
-		<?php echo form::open('../supply/create_supply', array('class' => '', 'method'=>'POST')); ?> 
+		<?php echo form::open('../toshiba/supply/create_supply', array('class' => '', 'method'=>'POST')); ?> 
 		<?php echo form::open_fieldset(array('id' => 'form_field'));?><br/>
 			<?php echo form::open_fieldset(array('class' => ''));?><br/>
 			<?php echo form::legend('Add New Supply',array('id' => 'supply_legend', 'class' => '')); ?>

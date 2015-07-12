@@ -13,7 +13,7 @@ Create_supply =
         
         $.ajax({
             type: 'POST',
-                url: 'http://localhost/kohana/index.php/create_supply/process_createsupply',
+                url: 'http://localhost/toshiba/supply/createsupply',
                 data: {item: item, description: description, hardware_type: hardware_type, number_of_supply: number_of_supply, price: price, manufacturer: manufacturer, date_acquired: date_acquired, status: status},
                 dataType: 'JSON',
                 success: function(data)
@@ -29,11 +29,11 @@ Create_supply =
             Create_supply.process();
         });
     }
-}
+};
 
 $(document).ready(function()
     {
     Create_supply.click_event();
-})
+});
                              
                     

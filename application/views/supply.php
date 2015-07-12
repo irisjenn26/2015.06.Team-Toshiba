@@ -70,7 +70,6 @@
 		<table id="dataTable" class="display">
 			<thead>
                 <tr>
-                    <th>ID</th>
                     <th>Product Name</th>
                     <th>Item</th>
                     <th>Manufacturer</th>
@@ -84,14 +83,12 @@
                 foreach($supplies_list as $supply)
                 {
                     echo "<tr>";
-                    echo "<td>" . $supply->id . "</td>";
                     echo "<td>" . $supply->item . "</td>";
                     echo "<td>" . $supply->hardware_type . "</td>";
                     echo "<td>" . $supply->manufacturer . "</td>";
                     echo "<td>" . $supply->number_of_supply . "</td>";
-                    echo "<td> Php" . number_format($supply->price,2,",",".") . "</td>";
-                    echo "<td><button id='delete'>delete</button>   
-                          <button id='edit' class='edit'>edit</button></td>";
+                    echo "<td> Php" . number_format($supply->price,2,".",",") . "</td>";
+                    echo "<td>".html::anchor('supply/show_update_editor/'.$supply->id,html::image('media/images/edit.png'))."</td>"; 
                     echo "</tr>";
 
 			}

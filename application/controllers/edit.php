@@ -1,8 +1,8 @@
-<?php defined('SYSPATH') or die('No direct script access.')
+<?php defined('SYSPATH') or die('No direct script access.');
 	class Edit_Controller extends Private_Template_Controller {
 		function __construct(){
 			parent::__construct();
-			this->template->script = html::script('media/js/.js');
+			$this->template->script = html::script('media/js/.js');
 		}
 		// edit and save of user
 		public function edit_user()
@@ -19,14 +19,14 @@
 						'password'		=> $user->password,
 						'username'		=> $user->username,
 						'country'		=> $user->country,
-						'postalcode'	=> $user->postalcode,
+						'postalcode'            => $user->postalcode,
 						'town_city'		=> $user->town_city,
 						'address'		=> $user->comp_address,
-						'contact_no'	=> $user->contact_no,
+						'contact_no'            => $user->contact_no,
 						'email'			=> $user->email,
 						'name'			=> $user->comp_name
 				);
-			$this->template->body->content = View::factory('create_user', $params);
+			$this->template->body->content = View::factory('create_user', $params)->render(TRUE);
 		}
 
 		public function save_user()
@@ -74,7 +74,7 @@
 						'date_acquired'		=> $supply->date_acquired,
 						'number_of_supply' 	=> $supply->number,
 						'hardware_type' 	=> $supply->hardware_type,
-						'item'				=> $supply->item,
+						'item'			=> $supply->item,
 						'manufacturer'		=> $supply->manufacturer,
 						'description'		=> $supply->description,
 						'status'			=> $supply->status,
@@ -157,9 +157,9 @@
 						'promotion_title'		=> $promotion->date_acquired,
 						'description' 			=> $promotion->number,
 						'start_date' 			=> $promotion->hardware_type,
-						'end_date'				=> $promotion->item
+						'end_date'			=> $promotion->item
 						);
-			$this->template->body->content = View::factory('create_promotion', $params);	
+			$this->template->body->content = View::factory('create_promotion', $params)->render(TRUE);	
 		}
 
 		public function save_promotion()

@@ -1,0 +1,26 @@
+<?php defined('SYSPATH') or die('No direct script access.'); ?>
+
+2015-07-10 05:34:30 +02:00 --- error: Uncaught Kohana_404_Exception: The page you requested, media/js/jquery.js, could not be found. in file C:/wamp/www/toshiba/system/core/Kohana.php on line 841
+2015-07-10 05:35:27 +02:00 --- error: Uncaught Kohana_404_Exception: The page you requested, media/js/jquery.js, could not be found. in file C:/wamp/www/toshiba/system/core/Kohana.php on line 841
+2015-07-10 05:36:19 +02:00 --- error: Uncaught Kohana_404_Exception: The page you requested, media/js/jquery.js, could not be found. in file C:/wamp/www/toshiba/system/core/Kohana.php on line 841
+2015-07-10 05:38:43 +02:00 --- error: Uncaught Kohana_404_Exception: The page you requested, media/js/jquery.js, could not be found. in file C:/wamp/www/toshiba/system/core/Kohana.php on line 841
+2015-07-10 05:38:44 +02:00 --- error: Uncaught Kohana_404_Exception: The page you requested, media/css/images/ui-bg_flat_75_ffffff_40x100.png, could not be found. in file C:/wamp/www/toshiba/system/core/Kohana.php on line 841
+2015-07-10 05:38:44 +02:00 --- error: Uncaught Kohana_404_Exception: The page you requested, media/css/images/ui-bg_glass_75_e6e6e6_1x400.png, could not be found. in file C:/wamp/www/toshiba/system/core/Kohana.php on line 841
+2015-07-10 05:38:44 +02:00 --- error: Uncaught Kohana_404_Exception: The page you requested, media/css/images/ui-icons_888888_256x240.png, could not be found. in file C:/wamp/www/toshiba/system/core/Kohana.php on line 841
+2015-07-10 05:38:46 +02:00 --- error: Uncaught Kohana_404_Exception: The page you requested, media/css/images/ui-icons_454545_256x240.png, could not be found. in file C:/wamp/www/toshiba/system/core/Kohana.php on line 841
+2015-07-10 05:38:46 +02:00 --- error: Uncaught Kohana_404_Exception: The page you requested, media/css/images/ui-bg_glass_75_dadada_1x400.png, could not be found. in file C:/wamp/www/toshiba/system/core/Kohana.php on line 841
+2015-07-10 05:38:46 +02:00 --- error: Uncaught Kohana_404_Exception: The page you requested, media/css/images/ui-icons_454545_256x240.png, could not be found. in file C:/wamp/www/toshiba/system/core/Kohana.php on line 841
+2015-07-10 05:38:46 +02:00 --- error: Uncaught Kohana_404_Exception: The page you requested, media/css/images/ui-bg_glass_65_ffffff_1x400.png, could not be found. in file C:/wamp/www/toshiba/system/core/Kohana.php on line 841
+2015-07-10 05:39:12 +02:00 --- error: Uncaught Kohana_404_Exception: The page you requested, media/js/jquery.js, could not be found. in file C:/wamp/www/toshiba/system/core/Kohana.php on line 841
+2015-07-10 05:39:32 +02:00 --- error: Uncaught Kohana_404_Exception: The page you requested, media/js/jquery.js, could not be found. in file C:/wamp/www/toshiba/system/core/Kohana.php on line 841
+2015-07-10 05:39:59 +02:00 --- error: Uncaught Kohana_404_Exception: The page you requested, media/js/jquery.js, could not be found. in file C:/wamp/www/toshiba/system/core/Kohana.php on line 841
+2015-07-10 05:40:21 +02:00 --- error: Uncaught Kohana_404_Exception: The page you requested, media/js/jquery.js, could not be found. in file C:/wamp/www/toshiba/system/core/Kohana.php on line 841
+2015-07-10 05:40:41 +02:00 --- error: Uncaught Kohana_404_Exception: The page you requested, media/js/jquery.js, could not be found. in file C:/wamp/www/toshiba/system/core/Kohana.php on line 841
+2015-07-10 05:41:06 +02:00 --- error: Uncaught Kohana_404_Exception: The page you requested, media/js/jquery.js, could not be found. in file C:/wamp/www/toshiba/system/core/Kohana.php on line 841
+2015-07-10 05:41:18 +02:00 --- error: Uncaught Kohana_404_Exception: The page you requested, media/js/jquery.js, could not be found. in file C:/wamp/www/toshiba/system/core/Kohana.php on line 841
+2015-07-10 05:42:33 +02:00 --- error: Uncaught Kohana_404_Exception: The page you requested, create_request.html, could not be found. in file C:/wamp/www/toshiba/system/core/Kohana.php on line 841
+2015-07-10 05:42:40 +02:00 --- error: Uncaught Kohana_404_Exception: The page you requested, create_request.html, could not be found. in file C:/wamp/www/toshiba/system/core/Kohana.php on line 841
+2015-07-10 05:42:44 +02:00 --- error: Uncaught Kohana_Database_Exception: There was an SQL error: Cannot add or update a child row: a foreign key constraint fails (`mydb`.`tbl_requests`, CONSTRAINT `useruser` FOREIGN KEY (`user_id`) REFERENCES `tbl_users` (`id`) ON UPDATE CASCADE) - INSERT INTO `tbl_requests` (`date_requested`, `date_needed`, `delivery_address`, `request_item`, `quantity`) VALUES ('', '', '', '', '') in file C:/wamp/www/toshiba/system/libraries/drivers/Database/Mysqli.php on line 142
+2015-07-10 22:38:04 +02:00 --- error: Uncaught Kohana_Exception: The requested view, supply, could not be found in file C:/wamp/www/toshiba/system/core/Kohana.php on line 1162
+2015-07-10 22:38:10 +02:00 --- error: Uncaught Kohana_Exception: The requested view, supply, could not be found in file C:/wamp/www/toshiba/system/core/Kohana.php on line 1162
+2015-07-10 22:38:12 +02:00 --- error: Uncaught Kohana_404_Exception: The page you requested, login.html, could not be found. in file C:/wamp/www/toshiba/system/core/Kohana.php on line 841
