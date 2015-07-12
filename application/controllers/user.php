@@ -2,17 +2,17 @@
 class User_Controller extends Private_Template_Controller {
 
 	private $user_model;
-        private $user_edit_model;
+    //private $user_edit_model;
 
 	
 function __construct(){
 	parent::__construct();
-	$this->user_edit_model = new Tbl_User_Model();
+	//$this->user_edit_model = new Tbl_User_Model();
 	//$this->template->scripts = script();
     //$this->template->body->content = View::factory('client/register');
-    $this->template->body->content = view::factory('user_list');
     //$this->template->body->content .= View::factory('client/register')->render(TRUE);
-	
+    $this->template->body->content = view::factory('user_list');
+    $this->user_model = new User_Model();	
 }
     
     public function index()
@@ -32,11 +32,9 @@ function __construct(){
 	
 	 private function show_users_list()
     { 
-        $this->user_model = new User_Model();
         $users_list = $this->user_model->get_users();
-      
         $this->template->body->content = View::factory('user_list')
-             ->set('users_list', $users_list);
+             					       ->set('users_list', $users_list);
    }
    
 	//public function show_create()
@@ -106,7 +104,7 @@ function __construct(){
 
     	$this->template->title   = 'User::Update';
         $user_data = $this->user_model->read($id);
-        $this->template->body->content =view::factory('update_user')
+        $this->template->body->content =view::factory('update_user_employees')
         							   ->set('user_data', $user_data);
     }
 

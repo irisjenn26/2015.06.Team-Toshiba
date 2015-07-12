@@ -44,7 +44,7 @@ class User_Model extends Model {
 		
         public function get_users() 
     	{
-	        $this->db->select('tbl_users.firstname as firstname, tbl_users.lastname as lastname, tbl_users.username as username,tbl_groups.name as name');
+	        $this->db->select('tbl_users.id as id, tbl_users.firstname as firstname, tbl_users.lastname as lastname, tbl_users.username as username,tbl_groups.name as name');
 	        $this->db->from($this->user_table);
 			$this->db->join($this->group_table, 'tbl_groups.id', 'tbl_users.group_id');
 	        $query = $this->db->get();

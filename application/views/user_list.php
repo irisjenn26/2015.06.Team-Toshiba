@@ -1,6 +1,6 @@
 
 <div id="accordion">
-<h3>User</h3>
+<h3>Employee Accounts</h3>
     <div>
 <?php echo form::open('user/create_clerk', array('class' => '')); ?> 
 		<?php echo form::open_fieldset(array('id' => 'form_field'));?><br/>
@@ -48,6 +48,7 @@
 				<th>Last Name</th>
 				<th>Username</th>
 				<th>User Type</th>
+				<th>Action</th>
 			</tr>
 	       </thead>
         <tbody>    
@@ -56,10 +57,12 @@
 			foreach($users_list as $user)
 			{
 				echo "<tr>";
+				echo "<td>" . $user->id . "</td>";
 				echo "<td>" . $user->firstname . "</td>";
 				echo "<td>" . $user->lastname . "</td>";
 				echo "<td>" . $user->username . "</td>";
 				echo "<td>" . $user->name . "</td>";
+				echo "<td>".html::anchor("user/edit/".$user->id,html::image('media/images/edit.png'))."</td>";
 				echo "</tr>";
 				
 			}

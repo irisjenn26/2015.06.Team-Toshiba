@@ -5,9 +5,9 @@
 *contract module - create, view, edit, logical delete
 *password - encryption
 *header - url fix and design group at contract 
+*update user - echo values
 
 update sales - implementation and echo the values
-update user - echo values
 resize - edit.png
 
 
