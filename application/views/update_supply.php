@@ -1,22 +1,38 @@
 <div id = 'update_supp'>
-<?php echo form::open('/edit/edit_supply', array('id' => 'update_supply','class' => 'white-popup-block mfp-hide', 'method'=>'POST')); ?> 
+<?php 
+                foreach($supply_data as $supply)
+                {    
+                     $supply->id;
+                     $supply->date_acquired;
+                     $supply->item;
+                     $supply->hardware_type;
+                     $supply->manufacturer;
+                     $supply->number_of_supply;
+                     $supply->price;
+                     $supply->description; 
+                }
+                
+
+                echo form::open('/supply/update/'.$supply->id, array('id' => 'update_supply','class' => '', 'method'=>'POST')); ?> 
+                <?=var_dump($supply)?>
+
                 <?php echo form::label(array('for' => 'label1', 'class' => ''),'Date Acquired: ');?>
-                                      
-                <input type="date" id="date_acquired" name="date_acquired" class="width-25" required>
+                                                      
+                <input type="date" id="date_acquired" name="date_acquired" class="width-25" value=<?=$supply->date_acquired?> required>
                 &nbsp 
                 <?php echo form::label(array('for' => 'label3', 'class' => ''), 'number of supply: ');?>
                                 
-                <input type="number" id="number" name="number" min ="1" max="999999" class="width-25" required>
+                <input type="number" id="number" name="number" min ="1" max="999999" class="width-25" value=<?=$supply->number_of_supply;?> required>
                 <br/>
                 <br/>
                 <?php echo form::label('label1','Product Name: ');?>
                 
-                <input type="text" id="item" name="item" class="width-25" required>
-                
+                <input type="text" id="item" name="item" value=<?=$supply->item?> required>
+                                                                <?=var_dump($supply->item)?>
                 &nbsp 
                 <?php echo form::label('label1','Price: ');?>
                 &nbsp  &nbsp   &nbsp   &nbsp   &nbsp   &nbsp   &nbsp   &nbsp   &nbsp    
-                <input type="number" id="price" name="price" min ="1" max="999999" class ="width-25" required>
+                <input type="number" id="price" name="price" min ="1" max="999999" class ="width-25" value=<?=$supply->price;?> required>
                 <br/>
                 <br/>
                 <?php echo form::label('label1','Manufacturer: ');?>
@@ -54,18 +70,14 @@
                 <br />
                 <br />          
                 <?php echo form::label(array('for' => 'label4', 'class' => ''), 'Description: ');?>
-                <?php echo form::textarea('description')?>                
+                <?php echo form::textarea('description', $supply->description)?>                
                 <br/>
                 <?php echo form::submit('submit', 'submit', 'class="btn"') ?>  
               <br/>             
 <?php form::close() ?>
-</div>      
-  <script type="text/javascript">
-        $("#update_supp").fancybox({
-            'scrolling' : 'yes',
-            'titleShow' : 'no',
-            'onClosed'  : function(){
-              }              
-        });
-        
+</div>
+    <script>
+    $('#tooplate_menu').click(function(event){
+    event.preventDefault();
+    });      
     </script>

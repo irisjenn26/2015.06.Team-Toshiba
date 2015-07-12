@@ -88,7 +88,7 @@
                     echo "<td>" . $supply->manufacturer . "</td>";
                     echo "<td>" . $supply->number_of_supply . "</td>";
                     echo "<td> Php" . number_format($supply->price,2,".",",") . "</td>";
-                    echo "<td>".html::anchor('supply/show_update_editor/'.$supply->id,html::image('media/images/edit.png'))."</td>"; 
+                    echo "<td>".html::anchor("supply/edit/".$supply->id."/",html::image('media/images/edit.png'))."</td>"; 
                     echo "</tr>";
 
 			}
@@ -106,6 +106,7 @@
                           active: false
         });
         
+
         //$( 'button.edit' ).click(function(id){
         //    location.href="supply/update_supply";
         //});

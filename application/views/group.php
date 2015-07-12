@@ -36,6 +36,7 @@
                     <th>Group Name</th>
                     <th>Level</th>
                     <th>Date Created</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>    
@@ -46,7 +47,7 @@
                     echo "<td>" . $group->name . "</td>";
                     echo "<td>" . $group->level . "</td>";
                     echo "<td>" . $group->date_created . "</td>";
-                    echo "<td>".html::anchor('group/show_update_editor/'.$supply->id,html::image('media/images/edit.png'))."</td>"; 
+                    echo "<td>".html::anchor('group/show_update_editor/'.$group->id,html::image('media/images/edit.png'))."</td>"; 
                     echo "</tr>";
 
 			}

@@ -7,7 +7,7 @@ class User_Controller extends Private_Template_Controller {
 	
 function __construct(){
 	parent::__construct();
-	
+	$this->user_edit_model = new Tbl_User_Model();
 	//$this->template->scripts = script();
     //$this->template->body->content = View::factory('client/register');
     $this->template->body->content = view::factory('user_list');
@@ -56,7 +56,7 @@ function __construct(){
 			'lastname'  =>  $this->input->post('lastname'),
 			'group_id'  =>  $this->input->post('acct_type'),
 			'address'   =>  $this->input->post('address'),
-			'password'  =>  $this->input->post('password'),
+			'password'  =>  md5(sha1($this->input->post('password'))),
 			'username'  =>  $this->input->post('username'), 
 		);
 		$repassword = $this->input->post('repassword');
@@ -101,19 +101,24 @@ public function create_client()
         
          public function show_update_editor($id)
     {
-        
+        //  $this->user_model = new User_Model();
+        // $users_list = $this->user_model->get_users();
+      
+        // $this->template->body->content = View::factory('user_list')
+        //      ->set('users_list', $users_list);
+
         $user_data = $this->user_model->read($id);
         $this->template->body->content =view::factory('update_user',$user_data);
     }
 
     public function update()
-    {   $user_edit_model = new Tbl_User_Model();
+    {   
                 $firstname      = $this->input->post('firstname');
                 $lastname       = $this->input->post('lastname');
                 $address        = $this->input->post('address');
-                $del_status        = $this->input->post('del_status');
+                $del_status     = $this->input->post('del_status');
             
-        $user_edit_model->update($this->input->post('id'),$firstname, $lastname, $address, $del_status);
+        $this->user_edit_model->update($this->input->post('id'),$firstname, $lastname, $address, $del_status);
         url::redirect('user_list');
     }
 }

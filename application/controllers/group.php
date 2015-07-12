@@ -1,5 +1,4 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
-
 class Group_Controller extends Private_Template_Controller
 {
     private $group_model;
@@ -14,7 +13,7 @@ class Group_Controller extends Private_Template_Controller
     public function index()
     {
         $this->template->title = "";
-        $this->show_groups_lists_list();
+        $this->show_groups_list();
     }
     
     private function show_groups_list()

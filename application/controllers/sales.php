@@ -46,5 +46,15 @@ class Sales_Controller extends Private_Template_Controller
         $this->sales_model->create($data_sales);
         url::redirect('../sales');
     }
+
+    public function show_update_editor()
+    {
+        
+    }
+
+   public function update()
+   {
+
+   } 
 }
 ?>

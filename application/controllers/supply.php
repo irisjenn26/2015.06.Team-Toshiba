@@ -6,14 +6,14 @@ class Supply_Controller extends Private_Template_Controller
     private $request_model;
     private $supplies_model;
     private $sales_model;
-      
+
     public function __construct()
     {
         parent::__construct();
             $this->supply_model  = new Supply_Model();
             $this->request_model = new Request_Model();
             $this->sales_model   = new Sales_Model();
-            
+			$this->supplies_model = new Tbl_Supply_Model();
             
     }
     public function index()
@@ -55,7 +55,7 @@ class Supply_Controller extends Private_Template_Controller
         url::redirect('supply');
     }
 
-    public function show_update_editor($id)
+    public function edit($id)
     {
         
         $supply_data = $this->supply_model->read($id);
@@ -71,23 +71,23 @@ class Supply_Controller extends Private_Template_Controller
         $this->update_supply_view->set('price',$supply_data[0]->price);
         $this->update_supply_view->set('del_status', $supply_data[0]->del_status);
          */
-        $this->template->body->content =view::factory('update',$supply_data);
+        $this->template->body->content =view::factory('update_supply')->set('supply_data',$supply_data);
     }
 
-    public function update()
-    {   $supplies_model = new tbl_supply_Model();
-                $date_acquired     = $this->input->post('date_acquired');
-                $number_of_supply  = $this->input->post('number_of_supply');
-                $hardware_type     = $this->input->post('hardware_type');
-                $item              = $this->input->post('item');
-                $manufacturer      = $this->input->post('manufacturer');
-                $description      = $this->input->post('description');
-                $status            = $this->input->post('status');
-                $price            = $this->input->post('price');
-                $del_status        = $this->input->post('del_status');
+    public function update($id)
+    {   
+            $data_supply = array(
+            'date_acquired'     =>  $this->input->post('date_acquired'),
+            'number_of_supply'  =>  $this->input->post('number'), 
+            'hardware_type'     =>  $this->input->post('hardware_type'),
+            'item'              =>  $this->input->post('item'),
+            'manufacturer'      =>  $this->input->post('manufacturer'),
+            'description'       =>  $this->input->post('description'),
+            'status'            =>  $this->input->post('status'),  
+            'price'             =>  $this->input->post('price')
+        );
             
-        $supplies_model ->update($this->input->post('id'),$date_acquired,$number_of_supply,$hardware_type,$item,
-                $manufacturer,$description,$status,$price, $del_status);
+        $this->supply_model->update($id,$data_supply);
         url::redirect('supply');
     }
 }

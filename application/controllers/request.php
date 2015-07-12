@@ -4,6 +4,11 @@ class Request_Controller extends Private_Template_Controller {
 	private $request_model;
     private $requests_view;
 
+    public function __construct(){
+    	parent::__construct();
+    	$this->request_model = new Request_Model();
+    }
+
 	public function index()
 	{
 		$this->template->title   = 'Request';
@@ -13,7 +18,7 @@ class Request_Controller extends Private_Template_Controller {
 
      private function show_requests_list()
     { 
-        $this->request_model = new Request_Model();
+        
         $requests_list = $this->request_model->get_requests();
       
         $this->template->body->content = View::factory('request')
@@ -29,7 +34,6 @@ class Request_Controller extends Private_Template_Controller {
 	public function create_request()
 	{
 		$this->auto_render   = FALSE;
-		$this->request_model = new Request_Model();
 		$data = array(
 			'date_requested'   => $this->input->post('date_requested'),
 			'date_needed'      =>  $this->input->post('date_needed'),
@@ -42,4 +46,22 @@ class Request_Controller extends Private_Template_Controller {
 
 		url::redirect('request');
 	}
+	 public function edit($id = '')
+    {
+        $request_data = $this->request_model->read($id);
+        $this->template->body->content =view::factory('update_request')->set('request_data',$request_data);
+    }
+
+    public function update($id = '')
+    {   
+            $data = array(
+			'date_requested'   =>  $this->input->post('date_requested'),
+			'date_needed'      =>  $this->input->post('date_needed'),
+			'delivery_address' =>  $this->input->post('delivery_address'),
+			'request_item'     =>  $this->input->post('request_item'),
+			'quantity'         =>  $this->input->post('quantity'), 
+			);
+        $this->request_model->update($id,$data);
+        url::redirect('request');
+    }
 }
