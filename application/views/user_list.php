@@ -57,7 +57,6 @@
 			foreach($users_list as $user)
 			{
 				echo "<tr>";
-				echo "<td>" . $user->id . "</td>";
 				echo "<td>" . $user->firstname . "</td>";
 				echo "<td>" . $user->lastname . "</td>";
 				echo "<td>" . $user->username . "</td>";
