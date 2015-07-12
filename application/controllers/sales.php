@@ -24,12 +24,13 @@ class Sales_Controller extends Private_Template_Controller
         $this->template->body->content = View::factory('sales')
                                            ->set('sales_list', $sales_list);
     }
-    public function show_add()
-    {
-        $this->template->title = 'New Invoice';
-        $this->template->body->content = View::factory('create_invoice');
+  
+    // public function show_add()
+    // {
+    //     $this->template->title = 'New Invoice';
+    //     $this->template->body->content = View::factory('create_invoice');
 
-    } 
+    // } 
 
     public function create_sales()
     {   

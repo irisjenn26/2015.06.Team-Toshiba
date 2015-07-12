@@ -24,12 +24,11 @@ function __construct(){
 		
 	}
 	
-	 public function show_user()
-	{
-		$this->template->title = 'User Registration';
-		$this->template->body->content = View::factory('create_user');
-
-	}
+	// public function show_user()
+	// {
+	// 	$this->template->title = 'User Registration';
+	// 	$this->template->body->content = View::factory('create_user');
+	// }
 	
 	 private function show_users_list()
     { 
@@ -42,10 +41,9 @@ function __construct(){
    
 	//public function show_create()
 	//{
-//		$this->template->title = 'User Registration';
-//		$this->template->body->content = View::factory('client/register')->render();
-
-//	}
+	//	$this->template->title = 'User Registration';
+	//	$this->template->body->content = View::factory('client/register')->render();
+	//}
 	
 	public function create_clerk()
 	{	
@@ -65,7 +63,7 @@ function __construct(){
 		url::redirect('user');
 	}
 	
-public function create_client()
+	public function create_client()
 	{	
 		$this->auto_render = FALSE;
 		$this->user_model  = new User_Model();
@@ -99,26 +97,30 @@ public function create_client()
 		url::redirect('user');
 	}
         
-         public function show_update_editor($id)
+    public function edit($id)
     {
-        //  $this->user_model = new User_Model();
+        // $this->user_model = new User_Model();
         // $users_list = $this->user_model->get_users();
-      
         // $this->template->body->content = View::factory('user_list')
         //      ->set('users_list', $users_list);
 
+    	$this->template->title   = 'User::Update';
         $user_data = $this->user_model->read($id);
-        $this->template->body->content =view::factory('update_user',$user_data);
+        $this->template->body->content =view::factory('update_user')
+        							   ->set('user_data', $user_data);
     }
 
     public function update()
     {   
-                $firstname      = $this->input->post('firstname');
-                $lastname       = $this->input->post('lastname');
-                $address        = $this->input->post('address');
-                $del_status     = $this->input->post('del_status');
-            
-        $this->user_edit_model->update($this->input->post('id'),$firstname, $lastname, $address, $del_status);
-        url::redirect('user_list');
+        $data_user = array(
+			'firstname' =>  $this->input->post('firstname'),
+			'lastname'  =>  $this->input->post('lastname'),
+			'group_id'  =>  $this->input->post('acct_type'),
+			'address'   =>  $this->input->post('address'),
+			'password'  =>  md5(sha1($this->input->post('password'))),
+			'username'  =>  $this->input->post('username'), 
+		);            
+        $this->user_edit_model->update($data_user);
+        url::redirect('/user_list');
     }
 }

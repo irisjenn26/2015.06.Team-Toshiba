@@ -29,8 +29,8 @@ class Login_Controller extends Public_Template_Controller {
         $get_user    = $this->user_model->get_user($username);
         
         $password    = $this->input->post('password');    
-           // if ($get_user->loaded == TRUE)
-            //{
+        //if ($get_user->loaded == TRUE)
+        //{
            
                 $pass = $get_user->password;
                 
@@ -46,20 +46,23 @@ class Login_Controller extends Public_Template_Controller {
                 ));
                 $permission =$_SESSION['permission'];
                 $perArr = json_decode($permission,true);
-                if(in_array("Can_view_Dashboard",$perArr))
-                    url::redirect('dashboard');
-                
-                else
-                     url::redirect('supply');
+                        if(in_array("Can_view_Dashboard",$perArr)){
+                            url::redirect('dashboard');
+                        }
+                        else
+                        {
+                             url::redirect('supply');
+                        }
                 } 
                 else
                 {
                     $error = 'Password Incorrect';
                     echo javascript::alert($error);
                 }
-            /*}
-            //else if (! $username && ! $password)
-          //  {
+
+        /*}
+        else if (! $username && ! $password)
+        {
                     $error = ' Please Input Username and Password';
                     //echo javascript::alert(' Please Input Username and Password');
             }

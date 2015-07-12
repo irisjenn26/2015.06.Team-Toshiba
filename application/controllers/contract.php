@@ -39,7 +39,7 @@ class Contract_Controller extends Private_Template_Controller
             'contract_path' =>  $this->input->post('contract_path')
         );
         $this->contract_model->create($contract_data);
-        url::redirect('contract');
+        url::redirect('/contract');
     }
 
     public function edit($id)
@@ -57,7 +57,7 @@ class Contract_Controller extends Private_Template_Controller
             'contract_path' =>  $this->input->post('contract_path')
         );    
         $groups_model->update($id,$contract_data);
-        url::redirect('contract');
+        url::redirect('/contract');
     }
 }
 ?>

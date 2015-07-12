@@ -20,16 +20,15 @@ class Request_Controller extends Private_Template_Controller {
     { 
         
         $requests_list = $this->request_model->get_requests();
-      
         $this->template->body->content = View::factory('request')
                 ->set('requests_list', $requests_list);
     }
-    public function show_add()
-    {
-        $this->template->title = 'New Request';
-        $this->template->body->content = View::factory('create_request');
-
-    } 
+    
+    // public function show_add()
+    // {
+    //     $this->template->title = 'New Request';
+    //     $this->template->body->content = View::factory('create_request');
+    // } 
     
 	public function create_request()
 	{
@@ -47,7 +46,8 @@ class Request_Controller extends Private_Template_Controller {
 		url::redirect('request');
 	}
 	 public function edit($id = '')
-    {
+    {	
+    	$this->template->title   = 'Request::Update';
         $request_data = $this->request_model->read($id);
         $this->template->body->content =view::factory('update_request')->set('request_data',$request_data);
     }

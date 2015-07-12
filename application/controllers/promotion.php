@@ -13,7 +13,7 @@ class Promotion_Controller extends Private_Template_Controller {
 
 	public function index()
 	{
-		$this->template->title   = 'Promotions';
+		$this->template->title      = 'Promotions';
 		//$this->template->scripts .= html::script("media/js/create_request.js");
 		$this->show_promotions_list();
 	}
@@ -25,12 +25,12 @@ class Promotion_Controller extends Private_Template_Controller {
         $this->template->body->content = View::factory('promotion')
                                        ->set('promotions_list', $promotions_list);
     }
-    public function show_add()
-    {
-        $this->template->title = 'New Promotion';
-        $this->template->body->content = View::factory('create_promotion');
+    // public function show_add()
+    // {
+    //     $this->template->title = 'New Promotion';
+    //     $this->template->body->content = View::factory('create_promotion');
 
-    } 
+    // } 
  
     public function edit($id)
     {
@@ -49,11 +49,10 @@ class Promotion_Controller extends Private_Template_Controller {
 			'start_date'    	=>  $this->input->post('start_date'),
 			'end_date'      	=>  $this->input->post('end_date'),
 			'status'        	=>  $this->input->post('status'),
-            'discount'          =>  $this->input->post('discount')
+         'discount'          =>  $this->input->post('discount')
 		);
-		
 		$this->promotion_model->create($data);
-		url::redirect('promotion');
+		url::redirect('/promotion');
 	}
         
     
@@ -69,6 +68,6 @@ class Promotion_Controller extends Private_Template_Controller {
         );
             
         $this->promotion_model ->update($id,$data);
-        url::redirect('promotion');
+        url::redirect('/promotion');
     }
 }

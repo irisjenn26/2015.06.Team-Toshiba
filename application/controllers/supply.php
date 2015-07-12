@@ -30,12 +30,13 @@ class Supply_Controller extends Private_Template_Controller
         $this->template->body->content = View::factory('supply')
                 ->set('supplies_list', $supplies_list);
     }
-    public function show_add()
-    {
-        $this->template->title = 'New Supply';
-        $this->template->body->content = View::factory('create_supply');
+    
+    // public function show_add()
+    // {
+    //     $this->template->title = 'New Supply';
+    //     $this->template->body->content = View::factory('create_supply');
 
-    } 
+    // } 
 
     public function create_supply()
     {   
@@ -57,7 +58,7 @@ class Supply_Controller extends Private_Template_Controller
 
     public function edit($id)
     {
-        
+        $this->template->title   = 'Supply::Update';
         $supply_data = $this->supply_model->read($id);
         /*
         $this->update_supply_view->set('id',$supply_data[0]->id);

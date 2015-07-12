@@ -43,18 +43,18 @@ class Sales_Model extends Model
 	
 	public function get_total_income()
     {
-        $query = $db->query('SELECT CASE STATUS WHEN "P" THEN SUM(total_amount) END FROM tbl_invoices ');
+        $query = $this->db->query('SELECT CASE STATUS WHEN "P" THEN SUM(total_amount) END FROM tbl_invoices ');
         return $query;
     }
 
     public function get_monthly_income($month)
     {
-        $query = $db->query("SELECT CASE EXTRACT(MONTH FROM date_purchased) WHEN '$month' THEN SUM(total_amount) END FROM tbl_invoices");
+        $query = $this->db->query("SELECT CASE EXTRACT(MONTH FROM date_purchased) WHEN '$month' THEN SUM(total_amount) END FROM tbl_invoices");
         return $query;
     }
     public function get_yearly_income($year)
     {
-        $query = $db->query("SELECT CASE EXTRACT(YEAR FROM date_purchased) WHEN '$year' THEN SUM(total_amount) END FROM tbl_invoices");
+        $query = $this->db->query("SELECT CASE EXTRACT(YEAR FROM date_purchased) WHEN '$year' THEN SUM(total_amount) END FROM tbl_invoices");
         return $query;
     }
 }

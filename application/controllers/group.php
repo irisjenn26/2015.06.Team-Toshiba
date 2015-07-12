@@ -23,12 +23,12 @@ class Group_Controller extends Private_Template_Controller
         $this->template->body->content = View::factory('group')
                 ->set('groups_list', $groups_list);
     }
-    public function show_add()
-    {
-        $this->template->title = 'New Group';
-        $this->template->body->content = View::factory('create_group');
-
-    } 
+    
+    // public function show_add()
+    // {
+    //     $this->template->title = 'New Group';
+    //     $this->template->body->content = View::factory('create_group');
+    // } 
 
     public function create_group()
     {   
@@ -41,26 +41,27 @@ class Group_Controller extends Private_Template_Controller
             'date_created'  =>  $this->input->post('date_created')
         );
         $this->group_model->create($group_data);
-        url::redirect('group');
+        url::redirect('/group');
     }
 
     public function show_update_editor($id)
     {
         
         $group_data = $this->group_model->read($id);
-        $this->template->body->content =view::factory('update_group',$group_data);
+        $this->template->body->content =view::factory('update_group')
+                                       ->set('group_data',$group_data);
     }
 
-    public function update()
+    public function update($id)
     {   
-        $groups_model = new tbl_group_Model();
-                $name              = $this->input->post('name');
-                $permission        = $this->input->post('permission');
-                $level             = $this->input->post('level');
-                $date_created      = $this->input->post('date_created');
-            
-        $groups_model->update($this->input->post('id'),$name, $permission,$level, $date_created);
-        url::redirect('group');
+        $group_data = array(
+            'name'          =>  $this->input->post('name'),
+            'permission'    =>  $this->input->post('permission'), 
+            'level'         =>  $this->input->post('level'),
+            'date_created'  =>  $this->input->post('date_created')
+        );            
+        $this->group_model->update($group_data);
+        url::redirect('/group');
     }
 }
 ?>
