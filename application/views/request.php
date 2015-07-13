@@ -34,7 +34,6 @@
                 <tr>
                     <th>Date</th>
                     <th>Product</th>
-                    <th>Type</th>
                     <th>Status</th>
                     <th>Action</th> 
                 </tr>

@@ -26,6 +26,7 @@ class Login_Controller extends Public_Template_Controller {
         $this->auto_render = FALSE;
         $username    = $this->input->post('username');
         $this->user_model = new Tbl_User_Model();
+        $role = new Group_Model();
         $get_user    = $this->user_model->get_user($username);
         
         $password    = $this->input->post('password');    
@@ -34,6 +35,7 @@ class Login_Controller extends Public_Template_Controller {
            
                 $pass = $get_user->password;
                 
+                $role_name = $role->read($get_user->group_id);
                 if($pass == $password)
                 {
                 $this->session->set(array(
@@ -43,7 +45,8 @@ class Login_Controller extends Public_Template_Controller {
                         'firstname'  => $get_user->firstname,
                         'lastname'   => $get_user->lastname,
                         'permission' => $get_user->permission,
-                        'name'       => $get_user->name
+                        'name'       => $get_user->name,
+                        'role'       => $role_name[0]->name
                 ));
                 $permission =$_SESSION['permission'];
                 $perArr = json_decode($permission,true);

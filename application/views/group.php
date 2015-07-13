@@ -46,7 +46,7 @@
                     echo "<td>" . $group->name . "</td>";
                     echo "<td>" . $group->level . "</td>";
                     $date = new DateTime($group->date_created);
-                    echo "<td>" . $date->format('F j Y') . "</td>"; 
+                    echo "<td>" . $date->format('F j, Y') . "</td>"; 
                     echo "</tr>";
 
 			}

@@ -13,7 +13,7 @@
         echo form::open_fieldset(array('for' => 'dash_field',
                                      'class' => ''));  
        
-        echo "<h1> Welcome</h1>";
+        echo "<h1> Welcome ". $_SESSION['firstname'] . "</h1>";
 
         echo "<div class='total_income'>
                  <label class='total'>Total Income:</label>

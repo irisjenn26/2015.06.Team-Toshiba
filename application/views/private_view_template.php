@@ -9,7 +9,7 @@
         <div id="tooplate_wrapper">
             <div id="tooplate_top_bar">
                 <a class="logout" href="../toshiba/login/logout">Log Out</a>
-                <h5 id="user"><?php echo $name = $_SESSION['firstname'];?></h5>
+                <h5 id="user"><?php echo $name = $_SESSION['firstname'];?> - <?= $_SESSION['role']?></h5>
             </div>	
             <?=View::factory("includes/header")->render(true)?>
             <?=View::factory("includes/navigation")->render(true)?>

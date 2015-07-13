@@ -42,7 +42,7 @@
                                       'MSI' => 'MSI',
                                       'Lenovo' => 'Lenovo',
                                       'Asus' => 'Asus');
-                      echo form::dropdown('manufacturer',$sample2,'Alienware');?>
+                      echo form::dropdown('manufacturer',$sample2,$supply->manufacturer);?>
                 &nbsp 
                 <?php echo form::label('label1','Status: '); ?> 
                 <?php $sample3 = array('Available' => 'Available',

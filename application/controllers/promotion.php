@@ -44,21 +44,24 @@ class Promotion_Controller extends Private_Template_Controller {
 	{
 		$this->auto_render   = FALSE;
 		$data = array(
+            'user_id'           =>  $_SESSION['id'],
 			'promotion_title'	=>  $this->input->post('promotion_title'),
 			'description'   	=>  $this->input->post('description'),
 			'start_date'    	=>  $this->input->post('start_date'),
 			'end_date'      	=>  $this->input->post('end_date'),
 			'status'        	=>  $this->input->post('status'),
-                        'discount'              =>  $this->input->post('discount')
+            'discount'          =>  $this->input->post('discount')
 		);
 		$this->promotion_model->create($data);
-		url::redirect('promotion');
+		url::redirect('/promotion');
 	}
         
     
     public function update($id)
     {   
+        var_dump($id);
         $data = array(
+            'user_id'           =>  $_SESSION['id'],
             'promotion_title'   =>  $this->input->post('promotion_title'),
             'description'       =>  $this->input->post('description'),
             'start_date'        =>  $this->input->post('start_date'),

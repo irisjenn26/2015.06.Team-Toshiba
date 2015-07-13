@@ -31,9 +31,9 @@
                 {
                     echo "<tr>";
                     $date_start = new DateTime($contract->date_start);
-                    echo "<td>" .$date_start->format('F j Y'). '</td>';
+                    echo "<td>" .$date_start->format('F j, Y'). '</td>';
                     $date_end = new DateTime($contract->date_end);
-                    echo "<td>" .$date_end->format('F j Y'). '</td>';
+                    echo "<td>" .$date_end->format('F j, Y'). '</td>';
                     echo "<td>".html::anchor("contract/edit/".$contract->id."/",html::image('media/images/edit.png'))."</td>"; 
                     echo "</tr>";
 			          }?>

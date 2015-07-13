@@ -36,21 +36,36 @@
                 ?>
                 &nbsp                
                 <?php echo form::label(array('for' => 'label2', 'class' => ''), 'Hardware: ');?>
-                <?php   $sample = array('graphics card' => 'Graphics Card', 
-                                      'power supply unit' => 'Power Supply Unit',
-                                      'computer cases' => 'Computer Cases',
-                                      'rack-mount computer cases' => 'Rack-Mount Computer Cases',
-                                      'laptop cases' => 'Laptop Cases',
-                                      'Mother Board' => 'Mother Board',
-                                      'chipsets for motherboard' => 'chipsets for motherboard',
-                                      'central processing unit' => 'Central Processing Unit',
-                                      'Internal HDD' => 'Internal HDD',
-                                      'Solid State Drive' => 'Solid State Drive',
-                                      'drive controller cards/RAID' => 'drive controller cards/RAID',
-                                      'Fan Controllers' => 'Fan Controllers',
-                                      'Cooling Solutions' => 'Cooling Solutions',
-                                      'Non-Refillable Liquid Cooling' => 'Non-Refillable Liquid Cooling',
-                                      'Refillable Liquid Cooling Kits' => 'Refillable Liquid Cooling Kits');
+                <?php   $sample = array(
+                                      'Graphics Card'                     =>    'Graphics Card', 
+                                      'Power Supply Unit'                 =>    'Power Supply Unit',
+                                      'Computer Cases'                    =>    'Computer Cases',
+                                      'Rack-Mount Computer Cases'         =>    'Rack-Mount Computer Cases',
+                                      'Laptop Cases'                      =>    'Laptop Cases',
+                                      'Mother Board'                      =>    'Mother Board',
+                                      'Chipsets for Motherboard'          =>    'Chipsets for Motherboard',
+                                      'Central Processing Unit'           =>    'Central Processing Unit',
+                                      'Internal HDD'                      =>    'Internal HDD',
+                                      'Solid State Drive'                 =>    'Solid State Drive',
+                                      'Drive Controller Cards/RAID'       =>    'Drive Controller Cards/RAID',
+                                      'Fan Controllers'                   =>    'Fan Controllers',
+                                      'Cooling Solutions'                 =>    'Cooling Solutions',
+                                      'Non-Refillable Liquid Cooling'     =>    'Non-Refillable Liquid Cooling',
+                                      'Refillable Liquid Cooling Kits'    =>    'Refillable Liquid Cooling Kits',
+                                      'Mouse'                             =>    'Mouse',
+                                      'Keyboard'                          =>    'Keyboard',
+                                      'Printer'                           =>    'Printer',
+                                      'Projector'                         =>    'Projector',
+                                      'Waterblock'                        =>    'Waterblock',
+                                      'Graphics Card Cooling'             =>    'Graphics Card Cooling',
+                                      'Visual Display Unit(Monitor)'      =>    'Visual Display Unit(Monitor)',
+                                      'Graphics Processing Unit'          =>    'Graphics Processing Unit',
+                                      'Joystick'                          =>    'Joystick',
+                                      'Speakers'                          =>    'Speakers',
+                                      'Modems'                            =>    'Modems',
+                                      'Network Card'                      =>    'Network Card',
+                                      'Chips for Network Card'            =>    'Chips for Network Card',
+                                      'Memory Modules'                    =>    'Memory Modules');
                       echo form::dropdown('hardware_type',$sample,'graphics card');?> 
                 <br />
                 <br />          

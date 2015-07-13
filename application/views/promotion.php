@@ -49,9 +49,9 @@
                     echo "<tr>";
                     echo "<td>" . $promotion->promotion_title . "</td>";
                     $date = new DateTime($promotion->start_date);
-                    echo "<td>" .$date->format('F j Y'). '</td>';
+                    echo "<td>" .$date->format('F j, Y'). '</td>';
                     $date2 = new DateTime($promotion->end_date);
-                    echo "<td>" .$date2->format('F j Y'). '</td>';
+                    echo "<td>" .$date2->format('F j, Y'). '</td>';
                     echo "<td>" . $promotion->status . "</td>";
                     echo "<td>".html::anchor("promotion/edit/".$promotion->id."/",html::image('media/images/edit.png'))."</td>";
                     echo "</tr>";
