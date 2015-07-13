@@ -56,7 +56,7 @@ class Contract_Controller extends Private_Template_Controller
             'date_end'      =>  $this->input->post('date_end'), 
             'contract_path' =>  $this->input->post('contract_path')
         );    
-        $groups_model->update($id,$contract_data);
+        $this->contract_model->update($id,$contract_data);
         url::redirect('/contract');
     }
 }

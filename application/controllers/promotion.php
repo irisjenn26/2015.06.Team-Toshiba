@@ -49,7 +49,11 @@ class Promotion_Controller extends Private_Template_Controller {
 			'start_date'    	=>  $this->input->post('start_date'),
 			'end_date'      	=>  $this->input->post('end_date'),
 			'status'        	=>  $this->input->post('status'),
+<<<<<<< HEAD
                         'discount'          =>  $this->input->post('discount')
+=======
+            'discount'          =>  $this->input->post('discount')
+>>>>>>> 9637814ece63cd967bcb29fb33bd484d2da01df2
 		);
 		$this->promotion_model->create($data);
 		url::redirect('promotion');
