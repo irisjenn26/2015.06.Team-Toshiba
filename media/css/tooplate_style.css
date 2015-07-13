@@ -171,7 +171,7 @@ a.logout {background: url(../images/tooplate_lp_btn.png); float: right; font-fea
 }
 
 #site_title { 
-	float: left; 
+	text-align: center; 
 }
 
 #site_title h1 { 
@@ -180,7 +180,7 @@ a.logout {background: url(../images/tooplate_lp_btn.png); float: right; font-fea
 }
 
 #site_title h1 a { 
-	display: block; 
+	display: inline-block; 
 	width: 190px; 
 	height: 40px; 
 	color: #fff; 
@@ -191,8 +191,8 @@ a.logout {background: url(../images/tooplate_lp_btn.png); float: right; font-fea
 /* menu */
 
 #tooplate_menu {
-	float: right;
-	width: 750px;
+	text-align: center;
+        width: 1020px;
 	height: 65px;
 	margin: 0 auto;
 }
@@ -214,7 +214,6 @@ a.logout {background: url(../images/tooplate_lp_btn.png); float: right; font-fea
 	display: block;
 	width: 125px;
 	height: 35px;
-	padding: 30px 0 0 0;
 	font-size: 14px;
 	color: #bd9213;	
 	text-align: center;

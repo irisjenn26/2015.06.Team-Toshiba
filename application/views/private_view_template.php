@@ -11,8 +11,7 @@
                 <a class="logout" href="../toshiba/login/logout">Log Out</a>
             </div>	
             <?=View::factory("includes/header")->render(true)?>
-            <div id="tooplate_middle_subpage">
-            </div>
+            <?=View::factory("includes/navigation")->render(true)?>
             <br/>
             <br/>
             <div id="tooplate_main">
