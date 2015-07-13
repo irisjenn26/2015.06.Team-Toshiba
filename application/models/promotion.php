@@ -2,13 +2,12 @@
 class Promotion_Model extends Model {
 
     private $promotion_table;
-    private $user_table;
-
+ 
     public function __construct()
     {
         parent::__construct();
         $this->promotion_table = 'tbl_promotions';
-        $this->user_table = 'tbl_users';
+
     }
 
     public function create($data)
@@ -32,7 +31,6 @@ class Promotion_Model extends Model {
     {
         $this->db->select('*');
         $this->db->from($this->promotion_table);
-        $this->db->join($this->user_table,'tbl_users.id', 'tbl_promotions.user_id');
         $query = $this->db->get();
         return $query->result_array();
     }

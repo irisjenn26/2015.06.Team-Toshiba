@@ -42,7 +42,8 @@ class Login_Controller extends Public_Template_Controller {
                         'username'   => $get_user->username,
                         'firstname'  => $get_user->firstname,
                         'lastname'   => $get_user->lastname,
-                        'permission' => $get_user->permission
+                        'permission' => $get_user->permission,
+                        'name'       => $get_user->name
                 ));
                 $permission =$_SESSION['permission'];
                 $perArr = json_decode($permission,true);

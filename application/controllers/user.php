@@ -61,40 +61,6 @@ function __construct(){
 		url::redirect('user');
 	}
 	
-	public function create_client()
-	{	
-		$this->auto_render = FALSE;
-		$this->user_model  = new User_Model();
-		$data_user = array(
-			'firstname' =>  $this->input->post('firstname'),
-			'lastname'  =>  $this->input->post('lastname'),
-			'group_id'  =>  $this->input->post('acct_type'),
-			'address'   =>  $this->input->post('address'),
-			'password'  =>  $this->input->post('password'),
-			'username'  =>  $this->input->post('username'), 
-		);
-		$repassword = $this->input->post('repassword');
-		//$pass_check =
-		//var_dump($data_user);
-		$data_info = array(
-			'country'    => $this->input->post('country'),
-			'postalcode' => $this->input->post('postalcode'),
-			'town_city'  => $this->input->post('town_city'), 
-			);
-			$data_comp = array(
-			'address'    => $this->input->post('comp_address'),
-			'contact_no' => $this->input->post('contact_no'),
-			'email'      => $this->input->post('email'),
-			'name'       => $this->input->post('comp_name')
-			);
-		$this->user_model->create_user($data_user);
-		$this->user_model->create_info($data_info);
-		$this->user_model->create_comp($data_comp);
-		
-
-		url::redirect('user');
-	}
-        
     public function edit($id)
     {
         // $this->user_model = new User_Model();
@@ -108,7 +74,7 @@ function __construct(){
         							   ->set('user_data', $user_data);
     }
 
-    public function update()
+    public function update($id)
     {   
         $data_user = array(
 			'firstname' =>  $this->input->post('firstname'),
@@ -118,7 +84,7 @@ function __construct(){
 			'password'  =>  md5(sha1($this->input->post('password'))),
 			'username'  =>  $this->input->post('username'), 
 		);            
-        $this->user_edit_model->update($data_user);
-        url::redirect('/user_list');
+        $this->user_model->update($id,$data_user);
+        url::redirect('/user');
     }
 }

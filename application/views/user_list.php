@@ -10,9 +10,11 @@
 				<?php echo form::input('username','username','class=""');?>&nbsp
 				<?php echo form::label(array('for' => 'label2', 'class' => ''),'Account Type: ');?>
 				<?php 
-					  $acct_type = array('0' => 'Administrator', 
-					  					 '1' => 'Clerk');
-					  echo form::dropdown('acct_type',$acct_type,'clerk'); 
+					  $acct_type = array('1' => 'Administrator', 
+                                                             '2' => 'Sales Clerk',
+                                                             '3' => 'Tecnical Clerk',
+                                                             '4' => 'Client');
+					  echo form::dropdown('acct_type',$acct_type,'Administator'); 
 				?>
 				<br/> <br/>
 				<?php echo form::label(array('for' => 'label3', 'class' => ''), 'Password: ');?>

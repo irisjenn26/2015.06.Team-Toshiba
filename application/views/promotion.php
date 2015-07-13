@@ -3,7 +3,7 @@
 	<div id = "accordion">
     <h3> Promotions </h3>
     <div>
-        <?php echo form::open() ?>
+        <?php echo form::open('/promotion/create_promotion', array('class' => '', 'method'=>'POST')); ?> 
         <fieldset>
             <legend>Promotion Information</legend>
             <fieldset>
@@ -12,9 +12,17 @@
                 <?php echo form::label('label2','End Date: '); ?>
                 <input type="date" id="end_date" name="end_date"><br/><br/>
                 <?php echo form::label('label4', 'Title: ')?>
-                <?php echo form::input('title');?><br/><br/>
+                <?php echo form::input('promotion_title');?><br/><br/>
                 <?php echo form::label('label3','Description: '); ?>               
                 <?php echo form::textarea('description'); ?><br/><br/>
+                 <?php echo form::label('label5','Discount: '); ?>               
+                <input type="number" min="1" max="50" id="discount" name="discount"><br/><br/>
+                <?php echo form::label('label6','Status: ');?>
+                <?php $status = array('disabled' => 'Disabled',
+                                      'enabled' => 'Enabled');
+                      echo form::dropdown('status',$status,'Enabled');?>
+                <br>
+                <br>
                 <?php echo form::submit('submit','submit'); ?>
             </fieldset>
         </fieldset>
@@ -22,7 +30,7 @@
         </div>
 	</div>
 	</div>
-    <br/    >
+    <br>
 	<div id = "table">
 		<table id="dataTable" class="display">
 			<thead>

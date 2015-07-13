@@ -10,17 +10,15 @@
 			$user->lastname;
 			$user->address;
 		}
-			echo form::open("user/create_clerk/'$user->id'", array('class' => '')); 
-	    	echo form::open_fieldset(array('id' => 'form_field'))."<br/>";
+			echo form::open("user/update/'$user->id'", array('class' => '')); 
+                        echo form::open_fieldset(array('id' => 'form_field'))."<br/>";
 			echo form::open_fieldset(array('class' => ''))."<br/>";
 			echo form::legend('Account Information',array('id' => 'acct_legend', 'class' => ''));
 
 			echo form::label(array('for' => 'label1', 'class' => ''),'Username: ');
-			echo form::input('username',$user->username,'class=""')."&nbsp";
-			echo form::label(array('for' => 'label2', 'class' => ''),'Account Type: ');
-					   $account_type = array('0' => 'Administrator', 
-					  					  '1' => 'Clerk');
-			echo form::dropdown('acct_type',$account_type,'clerk')."<br/><br/>"; 	
+			echo form::input('username',$user->username,'class=""')."&nbsp"; 
+                        echo "<br/>";
+                        echo "<br/>";
 			echo form::label(array('for' => 'label3', 'class' => ''), 'Password: ');
 			echo form::password('password',$user->password,'class =""')."&nbsp"; 
 			echo form::label(array('for' => 'label4', 'class' => ''), 'Re-Confirm Password: ');

@@ -67,7 +67,7 @@ em {
 	color: #bd9213; 
 }
 
-h1, h2, h3, h4, h5, h6 { color: #bd9213; font-weight: normal; }
+h1, h2, h3, h4, h6 { color: #bd9213; font-weight: normal; }
 h1 { font-size: 34px; margin: 0 0 20px; padding: 5px 0 }
 h2 { font-size: 28px; margin: 0 0 15px; padding: 5px 0; }
 h3 { font-size: 24px; margin: 0 0 15px; padding: 0; }
@@ -192,7 +192,8 @@ a.logout {background: url(../images/tooplate_lp_btn.png); float: right; font-fea
 
 #tooplate_menu {
 	text-align: center;
-        width: 1020px;
+        display: block;
+        width: 765px;
 	height: 65px;
 	margin: 0 auto;
 }
@@ -481,4 +482,8 @@ a.logout {background: url(../images/tooplate_lp_btn.png); float: right; font-fea
   background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
+}
+
+h5#user{
+   color: red;
 }
