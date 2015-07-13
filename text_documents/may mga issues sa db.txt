@@ -8,6 +8,9 @@
 *update user - echo values
 *Back Button for edit
 *resize - edit.png
+*Problem in adding and updating TEMPSOL: NULL client_id
+*Problem in adding and updating (db error: User) foreign key constraint
+*problem in adding and updating (db error: request) foreign key constraint
 
 update sales - implementation and echo the values
 deduction of supplies
@@ -17,8 +20,5 @@ username na nakalog-in dapat distinct siya pati role
 
 Additional:
 
-problem in adding and updating (db error: request) foreign key constraint
-Problem in adding and updating (db error: contracts) foreign key constraint
-Problem in adding and updating (db error: User) foreign key constraint
 Problem in adding and updating (unable to catch values and insert to db)
 Problem in adding and updating (unable to catch values and insert to db)

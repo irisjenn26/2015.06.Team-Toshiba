@@ -7,11 +7,12 @@
                     $request->request_item;
                     $request->delivery_address;
                     $request->quantity;
+                    $request->id;
 			}
            // var_dump($request->date_needed);
 			?>
 
-        <?php echo form::open('/request/update') ?>
+        <?php echo form::open("/request/update/".$request->id) ?>
         <fieldset>
             <legend>Request Information</legend>
             <fieldset>

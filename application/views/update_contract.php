@@ -11,7 +11,7 @@
                      $contract->date_end;
                      $contract->contract_path; 
                     }
-                      echo form::open('/contract/create_contract');  
+                      echo form::open('/contract/update/'.$contract->id);  
                       echo form::label(array('for' => 'label1', 'class' => ''),'Date Started: ')."&nbsp";
                       echo "<input type='date' id='date_start' name='date_start' class='width-25' value=$contract->date_start required>&nbsp";
 
@@ -21,7 +21,9 @@
                       echo form::label('label1','Contract Path: ');
                       echo form::input('contract_path',$contract->contract_path,"class='width-100' required")."<br/><br/>";
                       echo form::submit('submit', 'submit', 'class="btn"');             
-                   form::close() ?>      
+                           form::close(); 
+                      echo "&nbsp &nbsp &nbsp<button id='back' class='btn' onclick='history.back()'>Cancel</button>";
+                   ?>      
         </div>          
 </div>
 <script>

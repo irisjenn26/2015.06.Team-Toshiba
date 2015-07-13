@@ -10,7 +10,7 @@
 			$user->lastname;
 			$user->address;
 		}
-			echo form::open("user/update/'$user->id'", array('class' => '')); 
+			echo form::open("user/update/".$user->id, array('class' => '')); 
 	    	echo form::open_fieldset(array('id' => 'form_field'))."<br/>";
 			echo form::open_fieldset(array('class' => ''))."<br/>";
 			echo form::legend('Account Information',array('id' => 'acct_legend', 'class' => ''));
