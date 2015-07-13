@@ -12,7 +12,7 @@ class Group_Controller extends Private_Template_Controller
     }
     public function index()
     {
-        $this->template->title = "";
+        $this->template->title = "Merchant::Groups";
         $this->show_groups_list();
     }
     
@@ -46,7 +46,7 @@ class Group_Controller extends Private_Template_Controller
 
     public function show_update_editor($id)
     {
-        
+        $this->template->title = "Merchant::Update Group";
         $group_data = $this->group_model->read($id);
         $this->template->body->content =view::factory('update_group')
                                        ->set('group_data',$group_data);

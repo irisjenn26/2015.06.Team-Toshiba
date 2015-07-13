@@ -34,6 +34,7 @@ class Promotion_Controller extends Private_Template_Controller {
  
     public function edit($id)
     {
+        $this->template->title = "Merchant::Update Promotion";
         $promo_data = $this->promotion_model->read($id);
         $this->template->body->content = view::factory('update_promotion',$promo_data)
                                        ->set('promo_data', $promo_data);

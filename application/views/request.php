@@ -44,7 +44,7 @@
                 {
                     echo "<tr>";
                     $date = new DateTime($request->date_requested);
-                    echo "<td>" .$date->format('F j Y'). '</td>';
+                    echo "<td>" .$date->format('F j, Y'). '</td>';
                     echo "<td>" . $request->request_item . "</td>";
                     echo "<td>" . $request->request_type . "</td>";
                     echo "<td>".html::anchor("request/edit/".$request->id."/",html::image('media/images/edit.png'))."</td>";

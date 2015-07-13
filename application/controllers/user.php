@@ -102,7 +102,7 @@ function __construct(){
         // $this->template->body->content = View::factory('user_list')
         //      ->set('users_list', $users_list);
 
-    	$this->template->title   = 'User::Update';
+    	$this->template->title   = 'Merchant::Update User';
         $user_data = $this->user_model->read($id);
         $this->template->body->content =view::factory('update_user_employees')
         							   ->set('user_data', $user_data);

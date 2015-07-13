@@ -12,7 +12,7 @@ class Contract_Controller extends Private_Template_Controller
     }
     public function index()
     {
-        $this->template->title = "";
+        $this->template->title = "Merchant::Contract";
         $this->show_contract_list();
     }
     
@@ -43,7 +43,8 @@ class Contract_Controller extends Private_Template_Controller
     }
 
     public function edit($id)
-    {
+    {   
+        $this->template->title = "Merchant::Update Contract";
         $contract_data = $this->contract_model->read($id);
         $this->template->body->content =view::factory('update_contract')
                                        ->set('contract_data', $contract_data);

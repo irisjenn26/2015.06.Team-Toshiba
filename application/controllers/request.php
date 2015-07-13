@@ -47,7 +47,7 @@ class Request_Controller extends Private_Template_Controller {
 	}
 	 public function edit($id = '')
     {	
-    	$this->template->title   = 'Request::Update';
+    	$this->template->title   = 'Merchant::Update Request';
         $request_data = $this->request_model->read($id);
         $this->template->body->content =view::factory('update_request')->set('request_data',$request_data);
     }
