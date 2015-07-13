@@ -192,8 +192,7 @@ a.logout {background: url(../images/tooplate_lp_btn.png); float: right; font-fea
 
 #tooplate_menu {
 	text-align: center;
-        display: block;
-        width: 765px;
+        width: 900px;
 	height: 65px;
 	margin: 0 auto;
 }

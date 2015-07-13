@@ -33,7 +33,6 @@
 			<thead>
                 <tr>
                     <th>Date</th>
-                    <th>Requested by</th>
                     <th>Product</th>
                     <th>Type</th>
                     <th>Status</th>
@@ -47,10 +46,8 @@
                     echo "<tr>";
                     $date = new DateTime($request->date_requested);
                     echo "<td>" .$date->format('F j Y'). '</td>';
-                    echo "<td>" . $request->firstname . " " . $request->lastname . "</td>";
                     echo "<td>" . $request->request_item . "</td>";
                     echo "<td>" . $request->request_type . "</td>";
-                    echo "<td>" . $request->request_status . "</td>";
                     echo "<td>".html::anchor("request/edit/".$request->id."/",html::image('media/images/edit.png'))."</td>";
                     echo "</tr>";
 

@@ -36,7 +36,6 @@
                     <th>Group Name</th>
                     <th>Level</th>
                     <th>Date Created</th>
-                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>    
@@ -47,8 +46,7 @@
                     echo "<td>" . $group->name . "</td>";
                     echo "<td>" . $group->level . "</td>";
                     $date = new DateTime($group->date_created);
-                    echo "<td>" . $date->format('F j Y') . "</td>";
-                    echo "<td>".html::anchor('group/show_update_editor/'.$group->id,html::image('media/images/edit.png'))."</td>"; 
+                    echo "<td>" . $date->format('F j Y') . "</td>"; 
                     echo "</tr>";
 
 			}
