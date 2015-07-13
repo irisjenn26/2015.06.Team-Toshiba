@@ -13,7 +13,7 @@ class Supply_Controller extends Private_Template_Controller
             $this->supply_model  = new Supply_Model();
             $this->request_model = new Request_Model();
             $this->sales_model   = new Sales_Model();
-			$this->supplies_model = new Tbl_Supply_Model();
+			//$this->supplies_model = new Tbl_Supply_Model();
             
     }
     public function index()

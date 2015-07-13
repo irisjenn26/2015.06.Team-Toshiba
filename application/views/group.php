@@ -46,7 +46,8 @@
                     echo "<tr>";
                     echo "<td>" . $group->name . "</td>";
                     echo "<td>" . $group->level . "</td>";
-                    echo "<td>" . $group->date_created . "</td>";
+                    $date = new DateTime($group->date_created);
+                    echo "<td>" . $date->format('F j Y') . "</td>";
                     echo "<td>".html::anchor('group/show_update_editor/'.$group->id,html::image('media/images/edit.png'))."</td>"; 
                     echo "</tr>";
 

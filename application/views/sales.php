@@ -4,12 +4,13 @@
 		<table id="dataTable" class="display">
 			<thead>
                 <tr>
-                    <th>Date Purchased</th>
-                    <th>Client's Name</th>
+                    <th>Date</th>
+                    <th>Client Name</th>
                     <th>Quantity</th>
                     <th>Items</th>
-                    <th>Total Amount</th>
+                    <th>Total</th>
                     <th>Status</th>
+                    <th>Action</th>
                 </tr>
             <thead>
             <tbody>    
