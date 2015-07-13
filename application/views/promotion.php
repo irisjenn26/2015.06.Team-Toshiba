@@ -12,10 +12,12 @@
                 <?php echo form::label('label2','End Date: '); ?>
                 <input type="date" id="end_date" name="end_date"><br/><br/>
                 <?php echo form::label('label4', 'Title: ')?>
-                <?php echo form::input('title');?><br/><br/>
+                <?php echo form::input('title','','class="width-50"');?>&nbsp
+                <?php echo form::label('label5','Discount: '); ?>               
+                <input type="number" name='discount' class="width-30" min="1"><br/><br/>
                 <?php echo form::label('label3','Description: '); ?>               
                 <?php echo form::textarea('description'); ?><br/><br/>
-                <?php echo form::submit('submit','submit'); ?>
+                <?php echo form::submit('submit','submit', 'class="btn"'); ?>
             </fieldset>
         </fieldset>
         <?php form::close() ?>      

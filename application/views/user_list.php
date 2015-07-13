@@ -10,8 +10,10 @@
 				<?php echo form::input('username','username','class=""');?>&nbsp
 				<?php echo form::label(array('for' => 'label2', 'class' => ''),'Account Type: ');?>
 				<?php 
-					  $acct_type = array('0' => 'Administrator', 
-					  					 '1' => 'Clerk');
+					  $acct_type = array('1' => 'Administrator', 
+					  					 '2' => 'Sales Clerk',
+					  					 '3' => 'Technical Clerk'
+					  					 );
 					  echo form::dropdown('acct_type',$acct_type,'clerk'); 
 				?>
 				<br/> <br/>
@@ -29,7 +31,7 @@
 				<?php echo form::input('lastname', 'lastname', 'class = "width-35"');?><br/>
 				<br/>
 				<?php echo form::label(array('for'=>'label7', 'class' => ''),'Address: ');?>
-				<?php echo form::input('address', 'address', 'class ="width-80"');?><br/>
+				<?php echo form::input('address', '', 'class ="width-100"');?><br/>
 				<br/>
 	<?php echo form::close_fieldset();?>		
 	<?php echo form::submit('submit','submit', 'class = btn'); ?>

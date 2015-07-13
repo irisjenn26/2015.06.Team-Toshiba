@@ -68,7 +68,7 @@ function __construct(){
 		$data_user = array(
 			'firstname' =>  $this->input->post('firstname'),
 			'lastname'  =>  $this->input->post('lastname'),
-			'group_id'  =>  $this->input->post('acct_type'),
+			'group_id'  =>  4,
 			'address'   =>  $this->input->post('address'),
 			'password'  =>  $this->input->post('password'),
 			'username'  =>  $this->input->post('username'), 
@@ -108,7 +108,7 @@ function __construct(){
         							   ->set('user_data', $user_data);
     }
 
-    public function update()
+    public function update($id)
     {   
         $data_user = array(
 			'firstname' =>  $this->input->post('firstname'),
@@ -118,7 +118,7 @@ function __construct(){
 			'password'  =>  md5(sha1($this->input->post('password'))),
 			'username'  =>  $this->input->post('username'), 
 		);            
-        $this->user_edit_model->update($data_user);
-        url::redirect('/user_list');
+        $this->user_model->update($id,$data_user);
+        url::redirect('/user');
     }
 }

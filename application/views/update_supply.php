@@ -11,11 +11,13 @@
                      $supply->price;
                      $supply->description; 
                 }
+            
+                echo form::open('/supply/update/'.$supply->id, array('id' => 'update_supply','class' => '', 'method'=>'POST'));
+                echo form::open_fieldset(array('id' => 'form_field'))."<br/>";
+                echo form::open_fieldset(array('class' => ''))."<br/>";
+                echo form::legend('Supply Information',array('id' => 'acct_legend', 'class' => ''));
+ ?> 
                 
-
-                echo form::open('/supply/update/'.$supply->id, array('id' => 'update_supply','class' => '', 'method'=>'POST')); ?> 
-                <?=var_dump($supply)?>
-
                 <?php echo form::label(array('for' => 'label1', 'class' => ''),'Date Acquired: ');?>
                                                       
                 <input type="date" id="date_acquired" name="date_acquired" class="width-25" value=<?=$supply->date_acquired?> required>
@@ -28,7 +30,7 @@
                 <?php echo form::label('label1','Product Name: ');?>
                 
                 <input type="text" id="item" name="item" value=<?=$supply->item?> required>
-                                                                <?=var_dump($supply->item)?>
+
                 &nbsp 
                 <?php echo form::label('label1','Price: ');?>
                 &nbsp  &nbsp   &nbsp   &nbsp   &nbsp   &nbsp   &nbsp   &nbsp   &nbsp    
@@ -73,8 +75,8 @@
                 <?php echo form::textarea('description', $supply->description)?>                
                 <br/>
                 <?php echo form::submit('submit', 'submit', 'class="btn"') ?>  
-              <br/>             
-<?php form::close() ?>
+<?php form::close(); 
+echo "&nbsp &nbsp &nbsp<button id='back' class='btn' onclick='history.back()'>Cancel</button>";?>
 </div>
     <script>
     $('#tooplate_menu').click(function(event){
