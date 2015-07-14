@@ -18,7 +18,7 @@ class Supply_Controller extends Private_Template_Controller
     }
     public function index()
     {
-        $this->template->title = "";
+        $this->template->title = "Merchant::Supplies";
         $this->show_supplies_list();
     }
     
@@ -30,13 +30,20 @@ class Supply_Controller extends Private_Template_Controller
         $this->template->body->content = View::factory('supply')
                 ->set('supplies_list', $supplies_list);
     }
-    
-    // public function show_add()
-    // {
-    //     $this->template->title = 'New Supply';
-    //     $this->template->body->content = View::factory('create_supply');
+ public function view($id)
+    {
+        $supplies_information = $this->supply_model->read($id);
+        $this->template->body->content = view::factory('view_supply')
+                                       ->set('supplies_information',$supplies_information);
+    }   
 
-    // } 
+public function edit($id)
+    {
+        $this->template->title   = 'Merchant::Update Supply';
+        $supply_data = $this->supply_model->read($id);
+        $this->template->body->content =view::factory('update_supply')->set('supply_data',$supply_data);
+    }
+
 
     public function create_supply()
     {   
@@ -44,7 +51,7 @@ class Supply_Controller extends Private_Template_Controller
               
         $data_supply = array(
             'date_acquired'     =>  $this->input->post('date_acquired'),
-            'number_of_supply'  =>  $this->input->post('number'), 
+            'number_of_supply'  =>  $this->input->post('number_of_supply'), 
             'hardware_type'     =>  $this->input->post('hardware_type'),
             'item'              =>  $this->input->post('item'),
             'manufacturer'      =>  $this->input->post('manufacturer'),
@@ -56,30 +63,11 @@ class Supply_Controller extends Private_Template_Controller
         url::redirect('supply');
     }
 
-    public function edit($id)
-    {
-        $this->template->title   = 'Supply::Update';
-        $supply_data = $this->supply_model->read($id);
-        /*
-        $this->update_supply_view->set('id',$supply_data[0]->id);
-        $this->update_supply_view->set('date_acquired',$supply_data[0]->date_acquired);
-        $this->update_supply_view->set('number_of_supply',$supply_data[0]->number_of_supply);
-        $this->update_supply_view->set('hardware_type',$supply_data[0]->hardware_type);
-        $this->update_supply_view->set('item',$supply_data[0]->item);
-        $this->update_supply_view->set('manufacturer',$supply_data[0]->manufacturer);
-        $this->update_supply_view->set('description', $supply_data[0]->description);
-        $this->update_supply_view->set('status',$supply_data[0]->status);
-        $this->update_supply_view->set('price',$supply_data[0]->price);
-        $this->update_supply_view->set('del_status', $supply_data[0]->del_status);
-         */
-        $this->template->body->content =view::factory('update_supply')->set('supply_data',$supply_data);
-    }
-
     public function update($id)
     {   
             $data_supply = array(
             'date_acquired'     =>  $this->input->post('date_acquired'),
-            'number_of_supply'  =>  $this->input->post('number'), 
+            'number_of_supply'  =>  $this->input->post('number_of_supply'), 
             'hardware_type'     =>  $this->input->post('hardware_type'),
             'item'              =>  $this->input->post('item'),
             'manufacturer'      =>  $this->input->post('manufacturer'),

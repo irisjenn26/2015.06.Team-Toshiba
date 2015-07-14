@@ -24,7 +24,7 @@
                 &nbsp 
                 <?php echo form::label(array('for' => 'label3', 'class' => ''), 'number of supply: ');?>
                                 
-                <input type="number" id="number" name="number" min ="1" max="999999" class="width-25" value=<?=$supply->number_of_supply;?> required>
+                <input type="number" id="number" name="number_of_supply" min ="1" max="999999" class="width-25" value=<?=$supply->number_of_supply;?> required>
                 <br/>
                 <br/>
                 <?php echo form::label('label1','Product Name: ');?>

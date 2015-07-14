@@ -1,24 +1,25 @@
 <div id="accordion">
 <h3>Add New Inventory</h3>
 <div>
-        <?php echo form::open('/supply/create_supply', array('class' => '', 'method'=>'POST')); ?> 
+        <?php echo form::open('/supply/create_supply', array('class' => '', 'me
+        thod'=>'POST')); ?> 
                 <?php echo form::legend('Add New Supply',array('id' => 'supply_legend', 'class' => '')); ?>
                 
                 <?php echo form::label(array('for' => 'label1', 'class' => ''),'Date Acquired: ');?>
                     
-                <input type="date" id="date_acquired" name="date_acquired" class="width-25" required>
+                <input type="date" id="date_acquired" name="date_acquired" class="input-small width-25" required>
                 &nbsp 
                 <?php echo form::label(array('for' => 'label3', 'class' => ''), 'number of supply: ');?>
                 
-                <input type="number" id="number" name="number" min ="1" max="999999" class="width-25" required>
+                <input type="number" id="number" name="number" min ="1" max="999999" class="input-small width-25" required>
                 <br/>
                 <br/>
                 <?php echo form::label('label1','Product Name: ');?>
-                <input type="text" id="item" name="item" class="width-25" required>
+                <input type="text" id="item" name="item" class="input-small width-25" required>
                 &nbsp 
                 <?php echo form::label('label1','Price: ');?>
                 &nbsp  &nbsp   &nbsp   &nbsp   &nbsp   &nbsp   &nbsp   &nbsp   &nbsp    
-                <input type="number" id="price" name="price" min ="1" max="999999" class ="width-25" required>
+                <input type="number" id="price" name="price" min ="1" max="999999" class ="input-small width-25" required>
                 <br/>
                 <br/>
                 <?php echo form::label('label1','Manufacturer: ');?>
@@ -50,7 +51,7 @@
                                       'Drive Controller Cards/RAID'       =>    'Drive Controller Cards/RAID',
                                       'Fan Controllers'                   =>    'Fan Controllers',
                                       'Cooling Solutions'                 =>    'Cooling Solutions',
-                                      'Non-Refillable Liquid Cooling'     =>    'Non-Refillable Liquid Cooling',
+
                                       'Refillable Liquid Cooling Kits'    =>    'Refillable Liquid Cooling Kits',
                                       'Mouse'                             =>    'Mouse',
                                       'Keyboard'                          =>    'Keyboard',
@@ -72,7 +73,7 @@
                 <?php echo form::label(array('for' => 'label4', 'class' => ''), 'Description: ');?>
                 <?php echo form::textarea('description')?>                
                 <br/>
-                <?php echo form::submit('submit', 'submit', 'class="btn"') ?>  
+                <?php echo form::submit('submit', 'submit', 'class="btn btn-smaller btn-round"') ?>  
      <br/>             
 <?php form::close() ?>      
         </div>          
@@ -98,12 +99,12 @@
                 foreach($supplies_list as $supply)
                 {
                     echo "<tr>";
-                    echo "<td>" . $supply->item . "</td>";
+                    echo "<td>".$supply->item . "</td>";
                     echo "<td>" . $supply->hardware_type . "</td>";
                     echo "<td>" . $supply->manufacturer . "</td>";
                     echo "<td>" . $supply->number_of_supply . "</td>";
-                    echo "<td> Php" . number_format($supply->price,2,".",",") . "</td>";
-                    echo "<td>".html::anchor("supply/edit/".$supply->id."/",html::image('media/images/edit.png'))."</td>"; 
+                    echo "<td> ₱ " . number_format($supply->price,2,".",",") . "/ unit </td>";
+                    echo "<td>".html::anchor("supply/view/".$supply->id,html::image('media/images/eye.png'))."</td>";
                     echo "</tr>";
 
 			}
