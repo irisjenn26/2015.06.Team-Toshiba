@@ -44,10 +44,11 @@ class Login_Controller extends Public_Template_Controller {
                         'username'   => $get_user->username,
                         'firstname'  => $get_user->firstname,
                         'lastname'   => $get_user->lastname,
-                        'permission' => $get_user->permission,
+                    //    'permission' => $get_user->permission,
                         'name'       => $get_user->name,
                         'role'       => $role_name[0]->name
                 ));
+               $this->session->set('permission',$get_user->permission);
                 $permission =$_SESSION['permission'];
                 $perArr = json_decode($permission,true);
                         if(in_array("Can_view_Dashboard",$perArr)){
