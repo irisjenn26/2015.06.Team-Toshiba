@@ -8,10 +8,9 @@
       <div id="accordion">
       <h3>Add New Inventory</h3>
       <div>
-              <?php echo form::open('/supply/create_supply', array('class' => '', 'me
-              thod'=>'POST')); ?> 
+              <?php echo form::open('/supply/create_supply', array('class' => '', 'method'=>'POST')); ?> 
                       <?php echo form::legend('Add New Supply',array('id' => 'supply_legend', 'class' => '')); ?>
-                      
+         
                       <?php echo form::label(array('for' => 'label1', 'class' => ''),'Date Acquired: ');?>
                           
                       <input type="date" id="date_acquired" name="date_acquired" class="input-small width-25" required>
@@ -321,7 +320,7 @@
           
       </div>
       <br/>
-      <div>
+      <!-- <div>
         </div>
         <div id = "table">
           <table id="dataTable" class="display">
@@ -337,18 +336,18 @@
                   </thead>
                   <tbody>    
                   <?php
-                      foreach($supplies_list as $supply)
-                      {
-                          echo "<tr>";
-                          echo "<td>".$supply->item . "</td>";
-                          echo "<td>" . $supply->hardware_type . "</td>";
-                          echo "<td>" . $supply->manufacturer . "</td>";
-                          echo "<td>" . $supply->number_of_supply . "</td>";
-                          echo "<td> ₱ " . number_format($supply->price,2,".",",") . "/ unit </td>";
-                          echo "<td>".html::anchor("supply/view/".$supply->id,html::image('media/images/eye.png'))."</td>";
-                          echo "</tr>";
+                      // foreach($supplies_list as $supply)
+                      // {
+                      //     echo "<tr>";
+                      //     echo "<td>".$supply->item . "</td>";
+                      //     echo "<td>" . $supply->hardware_type . "</td>";
+                      //     echo "<td>" . $supply->manufacturer . "</td>";
+                      //     echo "<td>" . $supply->number_of_supply . "</td>";
+                      //     echo "<td> ₱ " . number_format($supply->price,2,".",",") . "/ unit </td>";
+                      //     echo "<td>".html::anchor("supply/view/".$supply->id,html::image('media/images/eye.png'))."</td>";
+                      //     echo "</tr>";
 
-            }
+           // }
           ?>
                   </tbody>
           </table>
@@ -356,11 +355,11 @@
         </div>
         </div>
         </div>
-
+ -->
 <script type="text/javascript">
-        $(document).ready(function(){
-            $('#dataTable').dataTable()    
-        });
+        // $(document).ready(function(){
+        //     $('#dataTable').dataTable()    
+        // });
 
         $( "#accordion" ).accordion({
                           heightStyle: "content",
