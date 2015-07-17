@@ -29,7 +29,13 @@ class Group_Controller extends Private_Template_Controller
     //     $this->template->title = 'New Group';
     //     $this->template->body->content = View::factory('create_group');
     // } 
-
+    public function view($id)
+    {
+        $group_information = $this->group_model->read($id);
+        $this->template->body->content = view::factory('view_group')
+                                       ->set('group_information',$group_information);
+    }
+    
     public function create_group()
     {   
         $this->auto_render = FALSE;

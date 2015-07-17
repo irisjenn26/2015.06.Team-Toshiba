@@ -18,7 +18,7 @@
                 foreach($sales_list as $sale)
                 {
                     echo "<tr>";
-                    $date = new DateTime($request->$sale->date_purchased);
+                    $date = new DateTime($sale->date_purchased);
                     echo "<td>" .$date->format('F j, Y'). '</td>';
                     echo "<td>" . $sale->firstname . " " . $sale->lastname ."</td>";
                     echo "<td>" . $sale->number_of_supply . "</td>";

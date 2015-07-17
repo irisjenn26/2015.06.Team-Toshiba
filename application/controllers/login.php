@@ -2,8 +2,10 @@
 class Login_Controller extends Public_Template_Controller {
 	
     private $login_model;
+    private $user_model;
     private $login_view;
     private $error;
+    private $users_model;
 
 	
     public function index()
@@ -44,19 +46,12 @@ class Login_Controller extends Public_Template_Controller {
                         'username'   => $get_user->username,
                         'firstname'  => $get_user->firstname,
                         'lastname'   => $get_user->lastname,
-                        'permission' => $get_user->permission,
+                    //  'permission' => $get_user->permission,
                         'name'       => $get_user->name,
                         'role'       => $role_name[0]->name
                 ));
-                $permission =$_SESSION['permission'];
-                $perArr = json_decode($permission,true);
-                        if(in_array("Can_view_Dashboard",$perArr)){
-                            url::redirect('dashboard');
-                        }
-                        else
-                        {
-                             url::redirect('supply');
-                        }
+               $this->session->set('permission',$get_user->permission);
+                url::redirect('dashboard');
                 } 
                 else
                 {
@@ -64,15 +59,41 @@ class Login_Controller extends Public_Template_Controller {
                     echo javascript::alert($error);
                 }
 
-        /*}
-        else if (! $username && ! $password)
-        {
-                    $error = ' Please Input Username and Password';
-                    //echo javascript::alert(' Please Input Username and Password');
+ 
+    }
+    public function pass()
+    {
+        $this->template->title = 'Login::Merchant';
+        $this->template->body = View::factory('forget_pass');       
+    }
+
+    public function forget_pass()
+    {
+            //$this->users_model = new User_Model();
+            
+            $email =  $this->input->post('email');
+            //var_dump($email);
+            
+            $this->user_model = new Tbl_User_Model();
+            $get_email = $this->user_model->get_email($email);
+            var_dump($get_email);
+            
+            //$this->users_model->update();
+            
+            if($get_email->loaded == TRUE){
+                $send_mail = new Email_Controller();
+                $subject = "Merchantilia::Forgot Password";
+                $message = "Click on link to change Password
+                            <br/> 
+                            <a href ='localhost/2015.06.toshiba/users'> 
+                            Click Here </a>";
+                $send_mail->send_password($subject, $message, $email);
+            
             }
             else
             {
-                    $error = 'Username Incorrect';
-            }*/
+                echo "we can't process your request right now";
+
+            }
     }
 }

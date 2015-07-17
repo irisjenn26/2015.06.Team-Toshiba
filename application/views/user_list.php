@@ -1,4 +1,4 @@
-
+<?php if(util::permission("can_add_user")){?>
 <div id="accordion">
 <h3>Employee Accounts</h3>
     <div>
@@ -39,8 +39,10 @@
         
 	</div>
 </div>
-<br />
+<?php }?>
+<br/>
 <div>
+
 	<div id = "table">
 		<table id="dataTable" class="display">
 			<thead>
@@ -63,7 +65,7 @@
 				echo "<td>" . $user->lastname . "</td>";
 				echo "<td>" . $user->username . "</td>";
 				echo "<td>" . $user->name . "</td>";
-				echo "<td>".html::anchor("user/edit/".$user->id,html::image('media/images/edit.png'))."</td>";
+				echo "<td>".html::anchor("user/view/".$user->id,html::image('media/images/eye.png'))."</td>";
 				echo "</tr>";
 				
 			}

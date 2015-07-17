@@ -1,4 +1,4 @@
-
+<?php if(util::permission("can_add_request")){?>
 <div>
 	<div id = "accordion">
     <h3> Request </h3>
@@ -27,8 +27,10 @@
         </div>
 	</div>
 	</div>
-    <br/    >
-	<div id = "table">
+<?php } ?>
+    <br/>
+    <?php if(util::permission("can_view_requests")){?>
+	
 		<table id="dataTable" class="display">
 			<thead>
                 <tr>
@@ -54,11 +56,13 @@
 		?>
             </tbody>
 		</table>
+    </div>
+    <?php }?>
+   
         <script type="text/javascript">
         $(document).ready(function(){
             $('#dataTable').dataTable();    
         });
         $( "#accordion" ).accordion({collapsible: true,active: false,});
     </script>
-	</div>
-</div>
+	

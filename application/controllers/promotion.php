@@ -31,6 +31,12 @@ class Promotion_Controller extends Private_Template_Controller {
     //     $this->template->body->content = View::factory('create_promotion');
 
     // } 
+    public function view($id)
+    {
+        $promo_information = $this->promotion_model->read($id);
+        $this->template->body->content = view::factory('view_promo')
+                                       ->set('promo_information',$promo_information);
+    } 
  
     public function edit($id)
     {
@@ -53,9 +59,29 @@ class Promotion_Controller extends Private_Template_Controller {
 			'status'        	=>  $this->input->post('status'),
             'discount'          =>  $this->input->post('discount')
 		);
+        $recipient = $_SESSION['email'];
 		$this->promotion_model->create($data);
+
+        $this->set_mail($recipient,$data);
 		url::redirect('/promotion');
 	}
+
+    public function set_mail($recipient,$data)
+    {
+            $send_mail = new Email_Controller();
+            $subject = "A new Promotion has come your way";
+            foreach($data as $information){
+                $information->start_date;
+                $information->end_date;
+                $information->promotion_title;
+                $information->description;
+                $information->discount;
+            }
+            $date = new DateTime($information->start_date);
+            $message = "This".$date->format('F j ,Y')." get a chance to buy our products at a low price of".
+            $information->discount." until ".$information->end_date; 
+            $send_mail->send_promotions($subject, $message, $recipient);
+    }
         
     
     public function update($id)
