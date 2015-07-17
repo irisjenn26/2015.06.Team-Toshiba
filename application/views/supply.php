@@ -1,4 +1,4 @@
-n<div id="tabs">
+<div id="tabs">
   <ul>
     <li><a href="#tabs-1">Supply</a></li>
     <li><a href="#tabs-2">Manufacturer</a></li>

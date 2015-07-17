@@ -31,17 +31,18 @@ function __construct(){
 	// }
 	
 	 private function show_users_list()
-    { 
+        { 
         $users_list = $this->user_model->get_users();
         $this->template->body->content = View::factory('user_list')
              					       ->set('users_list', $users_list);
-   }
+        }
    
-	//public function show_create()
-	//{
-	//	$this->template->title = 'User Registration';
-	//	$this->template->body->content = View::factory('client/register')->render();
-	//}
+	public function view($id)
+        {
+        $user_information = $this->user_model->read($id);
+        $this->template->body->content = view::factory('view_user')
+                                       ->set('user_information',$user_information);
+        } 
 	
 	public function create_clerk()
 	{	

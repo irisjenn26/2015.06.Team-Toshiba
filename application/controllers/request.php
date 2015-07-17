@@ -34,8 +34,9 @@ class Request_Controller extends Private_Template_Controller {
 	{
 		$this->auto_render   = FALSE;
 		$data = array(
-			'date_requested'   => $this->input->post('date_requested'),
+			'date_requested'   =>  $this->input->post('date_requested'),
 			'date_needed'      =>  $this->input->post('date_needed'),
+			'user_id'		   =>  $_SESSION['id'],
 			'delivery_address' =>  $this->input->post('delivery_address'),
 			'request_item'     =>  $this->input->post('request_item'),
 			'quantity'         =>  $this->input->post('quantity'), 
@@ -45,23 +46,29 @@ class Request_Controller extends Private_Template_Controller {
 
 		url::redirect('request');
 	}
-	 public function edit($id = '')
+	 public function edit($id)
     {	
     	$this->template->title   = 'Merchant::Update Request';
         $request_data = $this->request_model->read($id);
         $this->template->body->content =view::factory('update_request')->set('request_data',$request_data);
     }
 
-    public function update($id = '')
+    public function update($id)
     {   
             $data = array(
 			'date_requested'   =>  $this->input->post('date_requested'),
 			'date_needed'      =>  $this->input->post('date_needed'),
+			'user_id'		   =>  $_SESSION['id'],
 			'delivery_address' =>  $this->input->post('delivery_address'),
 			'request_item'     =>  $this->input->post('request_item'),
 			'quantity'         =>  $this->input->post('quantity'), 
 			);
         $this->request_model->update($id,$data);
         url::redirect('request');
+    }
+    
+    public function send_mail()
+    {
+
     }
 }

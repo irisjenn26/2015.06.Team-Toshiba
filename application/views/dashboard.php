@@ -1,6 +1,16 @@
-
-<div id="dashboard">
-  <?php 
+<div id="tabs">
+    <ul>
+        <li><a href="#tabs-1">Welcome</a></li>
+        <li><a href="#tabs-2">Reports</a></li>
+        <li><a href="#tabs-3">Logs</a></li>
+    </ul>
+    <div id="tabs-1">
+        <fieldset>
+            <h2>Welcome,</h2><h3><?php echo $_SESSION['firstname']?></h3><h2> !</h2>
+        </fieldset>
+    </div>
+    <div id="tabs-2">
+         <?php 
         foreach($total_income as $total => $tot){
         }
 
@@ -12,8 +22,6 @@
 
         echo form::open_fieldset(array('for' => 'dash_field',
                                      'class' => ''));  
-       
-        echo "<h1> Welcome ". $_SESSION['firstname'] . "</h1>";
 
         echo "<div class='total_income'>
                  <label class='total'>Total Income:</label>
@@ -27,17 +35,15 @@
 
             <div class='yearly_income'>
                 <label class='year'>Yearly Income:</label>
-                <span id='yearly_income'>".$yearly."</span><br/ ><br />";
-
-        echo "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
-        echo html::anchor('/supply', 'View Supply Here')
-        ."&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
-        echo html::anchor('/user', 'View Users Here')
-        ."&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
-        echo html::anchor('/request', 'View Requests Here');  
-        echo form::close_fieldset();?>
-
-    
-  </div>
+                <span id='yearly_income'>".$yearly."</span><br/ ><br />";  
+        echo form::close_fieldset();
+        ?>
+    </div>
+    <div id="tabs-3">
+        <?= View::factory('logs')->render();?>
+    </div>
 </div>
+<script type="text/javascript">
+    $("#tabs").tabs();
+</script>
+        

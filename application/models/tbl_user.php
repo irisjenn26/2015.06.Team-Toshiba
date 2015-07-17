@@ -6,11 +6,18 @@ class Tbl_User_Model extends ORM {
       $get_user = ORM::factory('tbl_user')
       			->SELECT('*')
       			->WHERE('username',$username)
-                        ->join("tbl_groups",'tbl_users.group_id',"tbl_groups.id")
+            ->join("tbl_groups",'tbl_users.group_id',"tbl_groups.id")
       			->find();
       return $get_user;
     }
-    
+    public function get_email($email)
+    {
+      $get_email = ORM::factory('tbl_user')
+                  ->SELECT('email')
+                  ->WHERE('email',$email)
+                  ->find();
+      return $get_email;
+    }
     public function update($id ,$firstname, $lastname, $address, $del_status)
     {
         $userDB = ORM::factory('tbl_user', $id);

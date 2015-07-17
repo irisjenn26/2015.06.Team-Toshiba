@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2015 at 05:30 AM
+-- Generation Time: Jul 17, 2015 at 04:47 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -64,13 +64,20 @@ CREATE TABLE IF NOT EXISTS `tbl_companies` (
 CREATE TABLE IF NOT EXISTS `tbl_contracts` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `contract_path` varchar(100) NOT NULL,
-  `client_info_id` bigint(20) unsigned NOT NULL,
+  `client_info_id` bigint(20) unsigned DEFAULT NULL,
   `date_start` datetime NOT NULL,
   `date_end` datetime NOT NULL,
-  `del_status` enum('active','inactive') NOT NULL DEFAULT 'active',
+  `del_status` enum('active','inactive') DEFAULT 'active',
   PRIMARY KEY (`id`),
-  KEY `clients_info_id_idx` (`client_info_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  KEY `clients_info_id` (`client_info_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `tbl_contracts`
+--
+
+INSERT INTO `tbl_contracts` (`id`, `contract_path`, `client_info_id`, `date_start`, `date_end`, `del_status`) VALUES
+(2, '/media/images/contract/', NULL, '2015-07-29 00:00:00', '2015-07-31 00:00:00', 'active');
 
 -- --------------------------------------------------------
 
@@ -92,10 +99,23 @@ CREATE TABLE IF NOT EXISTS `tbl_groups` (
 --
 
 INSERT INTO `tbl_groups` (`id`, `name`, `permission`, `level`, `date_created`) VALUES
-(1, 'Administrator', '["Can_edit_user''s_information", "Can_delete_Users", "Can_add_Users", "Can_view_Users", "Can_edit_hardware", "Can_delete_hardware", "Can_view_Hardware", "Can_add_Hardware", "Can_edit_merchant", "Can_delete_Merchants", "Can_add_Merchants", "Can_view_Merchants", "Can_edit_notification", "Can_delete_notification", "Can_add_equipment", "Can_view_request", "Can_edit_request", "Can_delete_request", "Can_add_orders", "Can_view_Notification", "Can_edit_equipment", "Can_delete_equipment", "Can_create_request", "Can_view_orders", "Can_edit_orders", "Can_delete_orders", "Can_create_notification", "Can_view_equipment", "Can_edit_group", "Can_delete_group", "Can_add_group", "Can_view_group", "Can_view_products_of_specific_Merchant", "Can_recommend_product_to_order","Can_view_logs"]', 99, '0000-00-00 00:00:00'),
-(2, 'Sales Clerk', 'can_view_supplies_page : 1, can_view_promotion_page : 1, can_view_users_page : 1, can_view_requests_page : 1, can_add_invoice : 1, can_add_request : 1', 50, '0000-00-00 00:00:00'),
-(3, 'Technical Clerk', 'can_add_supply : 1, can_view_supplies_page : 1', 30, '0000-00-00 00:00:00'),
-(4, 'Client', 'can_view_supplies_page : 1, can_view_requests_page : 1, can_view_promotions_page : 1, can_add_request : 1', 20, '0000-00-00 00:00:00');
+(1, 'Administrator', '["has_an_access_to_dashboard","has_an_access_to_supplies","has_an_access_to_requests","has_an_access_to_groups","has_an_access_to_promotions","has_an_access_to_contracts","has_an_access_to_users","can_add_supply","can_add_user","can_add_request","can_add_group","can_add_manufacturer","can_add_hardware","can_add_promotion","can_add_contract","can_view_supplies","can_view_requests","can_view_groups","can_view_promotions","can_view_contracts","can_view_users","can_edit_supply","can_edit_request","can_edit_promotion","can_edit_group","can_edit_user","can_edit_contracts","can_disable_supply","can_disable_request","can_disable_groups","can_disable_contracts","can_disable_users"]', 99, '0000-00-00 00:00:00'),
+(2, 'Sales Clerk', '["has_an_access_to_supplies","has_an_access_to_requests","has_an_access_to_promotions","has_an_access_to_users","can_add_request","can_add_promotion","can_add_user","can_view_supplies","can_view_requests","can_view_promotions","can_view_users","can_edit_request","can_edit_promotion","can_disable_request","can_disable_promotion"]', 50, '0000-00-00 00:00:00'),
+(3, 'Technical Clerk', '"Can_add_Hardware", "Can_edit_merchant", "Can_delete_Merchants", "Can_add_Merchants", "Can_view_Merchants", "Can_edit_notification", "Can_delete_notification", "Can_add_equipment", "Can_view_request", "Can_edit_request", "Can_delete_request", "Can_add_orders", "Can_view_Notification", "Can_edit_equipment", "Can_delete_equipment", "Can_create_request", "Can_view_orders", "Can_edit_orders", "Can_delete_orders", "Can_create_notification", "Can_view_equipment", "Can_edit_group", "Can_delete_group", "Can_add_group", "Can_view_group", "Can_view_products_of_specific_Merchant", "Can_recommend_product_to_order","Can_view_logs"]', 30, '0000-00-00 00:00:00'),
+(4, 'Client', '"Can_add_Hardware", "Can_edit_merchant", "Can_delete_Merchants", "Can_add_Merchants", "Can_view_Merchants", "Can_edit_notification", "Can_delete_notification", "Can_add_equipment", "Can_view_request", "Can_edit_request", "Can_delete_request", "Can_add_orders", "Can_view_Notification", "Can_edit_equipment", "Can_delete_equipment", "Can_create_request", "Can_view_orders", "Can_edit_orders", "Can_delete_orders", "Can_create_notification", "Can_view_equipment", "Can_edit_group", "Can_delete_group", "Can_add_group", "Can_view_group", "Can_view_products_of_specific_Merchant", "Can_recommend_product_to_order","Can_view_logs"]', 20, '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_hardware_types`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_hardware_types` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `type` varchar(45) CHARACTER SET latin1 NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `type_UNIQUE` (`type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -122,12 +142,41 @@ CREATE TABLE IF NOT EXISTS `tbl_invoices` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_logs`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_logs` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `description` varchar(45) NOT NULL,
+  `action` enum('logged in','logged out') NOT NULL,
+  `date` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_logs` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_manufacturers`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_manufacturers` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `manufacturer_name` varchar(45) CHARACTER SET latin1 NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `manufacturer_name_UNIQUE` (`manufacturer_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_promotions`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_promotions` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` bigint(20) unsigned NOT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
   `description` text NOT NULL,
   `status` enum('enabled','disabled') NOT NULL,
   `discount` smallint(5) unsigned NOT NULL,
@@ -138,15 +187,16 @@ CREATE TABLE IF NOT EXISTS `tbl_promotions` (
   PRIMARY KEY (`id`),
   KEY `user_id_idx` (`user_id`),
   KEY `supply_id_idx` (`supply_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `tbl_promotions`
 --
 
 INSERT INTO `tbl_promotions` (`id`, `user_id`, `description`, `status`, `discount`, `start_date`, `end_date`, `promotion_title`, `supply_id`) VALUES
-(1, 1, 'avsgsfgs', 'enabled', 20, '2015-07-15 00:00:00', '2015-07-27 00:00:00', 'refgfsdfsd', 0),
-(2, 1, 'avsgsfgs', 'enabled', 20, '2015-07-15 00:00:00', '2015-07-27 00:00:00', 'refgfsdfsd', 1);
+(1, 1, 'avsgsfgs', 'enabled', 0, '2015-07-15 00:00:00', '2015-07-02 00:00:00', '', 0),
+(2, 1, 'avsgsfgs', 'enabled', 20, '2015-07-15 00:00:00', '2015-07-27 00:00:00', 'refgfsdfsd', 1),
+(4, NULL, 'all processors', 'enabled', 13, '2015-07-28 00:00:00', '2015-07-30 00:00:00', 'Month End', NULL);
 
 -- --------------------------------------------------------
 
@@ -156,7 +206,7 @@ INSERT INTO `tbl_promotions` (`id`, `user_id`, `description`, `status`, `discoun
 
 CREATE TABLE IF NOT EXISTS `tbl_requests` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` bigint(20) unsigned NOT NULL,
+  `user_id` bigint(20) unsigned DEFAULT NULL,
   `quantity` smallint(5) unsigned NOT NULL,
   `request_item` varchar(100) NOT NULL,
   `date_requested` datetime NOT NULL,
@@ -166,7 +216,14 @@ CREATE TABLE IF NOT EXISTS `tbl_requests` (
   `request_status` varchar(25) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id_idx` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `tbl_requests`
+--
+
+INSERT INTO `tbl_requests` (`id`, `user_id`, `quantity`, `request_item`, `date_requested`, `date_needed`, `delivery_address`, `request_type`, `request_status`) VALUES
+(3, NULL, 6000, 'advfv', '2015-07-14 00:00:00', '2015-07-20 00:00:00', 'Baguio City', 'pending', '');
 
 -- --------------------------------------------------------
 
@@ -179,31 +236,17 @@ CREATE TABLE IF NOT EXISTS `tbl_supplies` (
   `promotion_id` bigint(20) unsigned DEFAULT NULL,
   `item` varchar(50) NOT NULL,
   `description` text NOT NULL,
-  `hardware_type` varchar(100) NOT NULL,
   `number_of_supply` smallint(5) unsigned NOT NULL,
   `price` int(20) unsigned NOT NULL,
-  `manufacturer` varchar(100) NOT NULL,
   `date_acquired` datetime NOT NULL,
   `status` varchar(25) NOT NULL,
-  `del_status` enum('active','inactive') DEFAULT 'active',
+  `del_status` enum('active','inactive') NOT NULL DEFAULT 'active',
+  `manufacturer_id` bigint(20) unsigned NOT NULL,
+  `type_id` bigint(20) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `promotion_id_idx` (`promotion_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
-
---
--- Dumping data for table `tbl_supplies`
---
-
-INSERT INTO `tbl_supplies` (`id`, `promotion_id`, `item`, `description`, `hardware_type`, `number_of_supply`, `price`, `manufacturer`, `date_acquired`, `status`, `del_status`) VALUES
-(1, NULL, 'Aurora R4 Barebones Chassis', 'With Cooler Harness', 'Computer Cases', 200, 8500, 'Alienware', '2015-07-14 00:00:00', 'Available', 'active'),
-(2, NULL, 'Aurora R4 ALX Barebones Chassis', 'With Harness', 'Computer Cases', 200, 6116, 'Alienware', '2015-07-01 08:08:08', 'Available', 'active'),
-(3, NULL, 'Aurora R4 ALX Chassis Desktop Tower Black Case She', 'With Fan', 'Computer Cases', 1000, 9457, 'Alienware', '2015-07-05 10:10:20', 'Available', 'active'),
-(4, NULL, 'Aurora R4 Black Case', 'With Dell FPV4P Motherboard & Power Supply', 'Computer Cases', 500, 17690, 'Alienware', '2015-07-06 08:56:00', 'Available', 'active'),
-(5, NULL, 'Aurora (Late 2009) Tower Case', 'With Windows 7 COA,0K613M', 'Computer Cases', 2500, 4400, 'Alienware', '2015-07-06 09:30:00', 'Available', 'inactive'),
-(6, NULL, 'Aurora R4 Standard Chassis Desktop Tower Black Cas', 'With Fan', 'Computer Cases', 3500, 8600, 'Alienware', '2015-07-06 11:30:33', 'Available', 'active'),
-(7, NULL, '', '', '', 0, 0, '', '0000-00-00 00:00:00', '', 'inactive'),
-(8, NULL, 'Hello', 'sderewfr', 'graphics card', 2000, 2000, 'Alienware', '0000-00-00 00:00:00', 'Available', 'active'),
-(9, NULL, 'AMD 6', 'elite', 'graphics card', 5000, 8000, 'Alienware', '2015-09-26 11:11:11', 'Available', 'active');
+  KEY `type_id_idx` (`type_id`),
+  KEY `manufacturer_id_idx` (`manufacturer_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -237,7 +280,7 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   KEY `group_id_idx` (`group_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
 
 --
 -- Dumping data for table `tbl_users`
@@ -247,17 +290,17 @@ INSERT INTO `tbl_users` (`id`, `group_id`, `username`, `password`, `firstname`, 
 (1, 1, 'administrator', 'admin', 'Iris Jennifer', 'Farnacio', 'Baguio City', 'jennfarnacio@outlook.com', 'active'),
 (2, 1, 'administrator2', 'admin2', 'Ivan Jules', 'De Vera', 'Baguio City', 'devera.ivanjules@outlook.com', 'active'),
 (3, 2, 'sales1', 'sales1', 'Kimberly ', 'Ragudo', 'La Union', 'kimmylovesma@gmail.com', 'active'),
-(4, 2, 'sales2', 'qwerty', 'Daphne', 'Pulido', 'Pangasinan', 'sweetpanda@yahoo.com', 'active'),
+(4, 2, 'sales2', '0a2ede56f6523e16b6a2794c26921580', 'daphne', 'Pulido', 'Pangasinan', 'sweetpanda@yahoo.com', 'active'),
 (5, 3, 'tech2', 'tech2', 'Rose ', 'Lay Yu', 'Baguio City', 'roseb1996@gmail.com', 'active'),
 (6, 3, 'tech3', 'tech3', 'Frankxen', 'Pinzon', 'Baguio City', 'fx.epong@gmail.com', 'active'),
 (7, 4, 'client', 'client1', 'Philip', 'Gomez', 'Baguio City', 'philip.gomez@yahoo.com', 'active'),
 (8, 4, 'client2', 'client2', 'KC Marie', 'Arce', 'Baguio City', 'arcekc@gmail.com', 'active'),
 (9, 4, 'client3', 'client3', 'Mark Adriel', 'Bermillo', 'Baguio City', 'markadrielbermillo@gmail.com', 'active'),
 (10, 4, 'client4', 'client4', 'Glenn', 'Andres', 'Baguio City', 'glennandres@gmail.com', 'active'),
-(11, 4, 'client5', 'client5', 'Elghie', 'Batuyong', 'Baguio City', 'elghiebatuyong@yahoo.com', 'active'),
+(11, 1, 'client5', '5030a50a427c90e9bf8ffd9ac4a2fae9', 'Elghie LG', 'Batuyong', 'Baguio City', 'elghiebatuyong@yahoo.com', 'active'),
 (12, 4, 'client6', 'client6', 'Marielle', 'Casem', 'Pangasinan', 'mariellecasem@gmail.com', 'active'),
-(13, 3, 'tech4', 'tech4', 'Chung Him', 'Chan', 'Ilocos Sur', 'chunghimchan@gmail.com', 'active'),
-(14, 2, 'sales3', 'sales3', 'Corina Jean', 'Oviedo', 'Isabela', 'corinajeanoviedo@gmail.com', 'active'),
+(13, NULL, 'tech1', '1b90d02fa7d0682b3225bbdf00e40d7e', 'Chung Him Benedict', 'Chan', 'Ilocos Sur', 'chunghimchan@gmail.com', 'active'),
+(14, NULL, 'sales', '04cc129138ad24673c6ff3c4dc8944a3', 'Corina Jean Guilbanoy', 'Oviedo', 'Isabela', 'corinajeanoviedo@gmail.com', 'active'),
 (15, 3, 'tech5', 'tech5', 'Justin Mari', 'Gutierrez', 'Ilocos Sur', 'sablewings@gmail.com', 'active'),
 (16, 4, 'client7', 'client7', 'Kevin John', 'Portento', 'Tarlac', 'iambitch@gmail.com', 'active'),
 (17, 4, 'client8', 'client8', 'Kathleen Faye', 'Barroga', 'Pangasinan', 'kathbarroga@gmail.com', 'active'),
@@ -268,7 +311,9 @@ INSERT INTO `tbl_users` (`id`, `group_id`, `username`, `password`, `firstname`, 
 (22, 4, 'client11', 'client11', 'Kit Christian', 'Rosalin', 'Zamboanga City', 'kitrosalin_18@yahoo.com', 'active'),
 (23, 3, 'tech9', 'tech9', 'Florangel', 'Rillera', 'Baguio City', 'rilleradflorangel@yahoo.com', 'active'),
 (24, 4, 'client12', 'client12', 'Mark Herbert', 'Cabuang', 'Tarlac', 'markherbertcabuang@gmail.com', 'active'),
-(25, 4, 'client14', 'client14', 'Kathreen Ann', 'Silen', 'La Union', 'katsilen@gmail.com', 'active');
+(25, 4, 'client14', 'client14', 'Kathreen Ann', 'Silen', 'La Union', 'katsilen@gmail.com', 'active'),
+(31, 1, 'roseb', '3d7e71dcfd7e95b728247f997853a307', 'Rose', 'Bilag', 'Baguio City', '', 'active'),
+(32, 2, 'useruser', '0a2ede56f6523e16b6a2794c26921580', 'client', 'user', 'Baguio City', '', 'active');
 
 --
 -- Constraints for dumped tables
@@ -297,22 +342,17 @@ ALTER TABLE `tbl_invoices`
   ADD CONSTRAINT `supply_id` FOREIGN KEY (`supply_id`) REFERENCES `tbl_users` (`id`) ON UPDATE NO ACTION;
 
 --
--- Constraints for table `tbl_promotions`
+-- Constraints for table `tbl_logs`
 --
-ALTER TABLE `tbl_promotions`
-  ADD CONSTRAINT `useridid` FOREIGN KEY (`user_id`) REFERENCES `tbl_users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `tbl_requests`
---
-ALTER TABLE `tbl_requests`
-  ADD CONSTRAINT `useruser` FOREIGN KEY (`user_id`) REFERENCES `tbl_users` (`id`) ON UPDATE CASCADE;
+ALTER TABLE `tbl_logs`
+  ADD CONSTRAINT `user_logs` FOREIGN KEY (`user_id`) REFERENCES `tbl_users` (`id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tbl_supplies`
 --
 ALTER TABLE `tbl_supplies`
-  ADD CONSTRAINT `promotion_id` FOREIGN KEY (`promotion_id`) REFERENCES `tbl_promotions` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `manufacturer_id_idx` FOREIGN KEY (`manufacturer_id`) REFERENCES `tbl_manufacturers` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `type_id_idx` FOREIGN KEY (`type_id`) REFERENCES `tbl_hardware_types` (`id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tbl_supplies_requests`

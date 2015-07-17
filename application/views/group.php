@@ -1,3 +1,4 @@
+<?php if(util::permission("can_add_group")){?>
 <div id="accordion">
 <h3>Add New Group</h3>
 <div>
@@ -26,10 +27,12 @@
         </div>          
     
 </div>
+<?php }?>
 <br/>
 <div>
 	</div>
-	<div id = "table">
+<?php if(util::permission("can_view_groups")){ ?>	
+<div id = "table">
 		<table id="dataTable" class="display">
 			<thead>
                 <tr>
@@ -47,12 +50,14 @@
                     echo "<td>" . $group->level . "</td>";
                     $date = new DateTime($group->date_created);
                     echo "<td>" . $date->format('F j, Y') . "</td>"; 
-                    echo "</tr>";
+//                    echo "</tr>";
 
 			}
 		?>
             </tbody>
 		</table>
+</div>
+<?php } ?>
        <script type="text/javascript">
         $(document).ready(function(){
             $('#dataTable').dataTable()    
@@ -68,5 +73,4 @@
         //    location.href="supply/update_supply";
         //});
     </script>
-	</div>
-</div>
+	

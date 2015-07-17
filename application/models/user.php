@@ -41,6 +41,11 @@ class User_Model extends Model {
     	{
         	$this->db->update($this->user_table, $data, array('id' => $id));
     	}
+
+    	public function update_password($id,$email)
+    	{
+    		$this->db->update($this->user_table, $email, array('id' => $id));
+    	}
 		
         public function get_users() 
     	{
@@ -49,14 +54,5 @@ class User_Model extends Model {
 			$this->db->join($this->group_table, 'tbl_groups.id', 'tbl_users.group_id');
 	        $query = $this->db->get();
 	        return $query->result_array();
-    	}
-
-    	public function get_permissions($group_id)
-    	{
-    		$this->db->select('tbl_groups.permission');
-    		$this->db->from($this->group_table);
-    		$this->db->where('tbl_groups.id' == $group_id);
-    		$query = $this->db->get();
-    		return $query->result_array();
     	}
 }
