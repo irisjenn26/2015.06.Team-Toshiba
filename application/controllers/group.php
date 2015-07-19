@@ -24,24 +24,56 @@ class Group_Controller extends Private_Template_Controller
                 ->set('groups_list', $groups_list);
     }
     
-    // public function show_add()
-    // {
-    //     $this->template->title = 'New Group';
-    //     $this->template->body->content = View::factory('create_group');
-    // } 
-
+    public function view($id)
+    {
+        $group_information = $this->group_model->read($id);
+        $this->template->body->content = view::factory('view_group')
+                                       ->set('group_information',$group_information);
+    }
+    
     public function create_group()
     {   
         $this->auto_render = FALSE;
               
-        $group_data = array(
+        $data = array(
             'name'          =>  $this->input->post('name'),
             'permission'    =>  $this->input->post('permission'), 
             'level'         =>  $this->input->post('level'),
-            'date_created'  =>  $this->input->post('date_created')
+            'date_created'  =>  $this->input->post('date_created'),
+            'delstatus'     =>  'true'
         );
-        $this->group_model->create($group_data);
-        url::redirect('/group');
+        $errors = array(
+            'name'          =>  '',
+            'permission'    =>  '', 
+            'level'         =>  '',
+            'date_created'  =>  ''
+        );
+
+        if(isset($data))
+        {
+            $post = new Validation($data);
+
+            $post->pre_filter('trim', TRUE);
+            $post->pre_filter('ucfirst', 'name');
+
+            $post->add_rules('name', 'required', 'length[5,10]','alpha_numeric');
+            $post->add_rules('permission', 'required');
+            $post->add_rules('level', 'required', 'digit');
+            $post->add_rules('date_created', 'required');
+
+            if($post->validate())
+            {
+                $this->group_model->create($group_data);
+                url::redirect('/group');
+            }
+            else
+            {
+                $data = arr::overwrite($data, $post->as_array());
+                $data = arr::overwrite($errors, $post->errors('form_error_messages'));
+                url::redirect('/group');
+            }
+        }
+        
     }
 
     public function show_update_editor($id)
@@ -54,14 +86,45 @@ class Group_Controller extends Private_Template_Controller
 
     public function update($id)
     {   
-        $group_data = array(
+        $this->auto_render = FALSE;
+              
+        $data = array(
             'name'          =>  $this->input->post('name'),
             'permission'    =>  $this->input->post('permission'), 
             'level'         =>  $this->input->post('level'),
             'date_created'  =>  $this->input->post('date_created')
-        );            
-        $this->group_model->update($group_data);
-        url::redirect('/group');
+        );
+        $errors = array(
+            'name'          =>  '',
+            'permission'    =>  '', 
+            'level'         =>  '',
+            'date_created'  =>  ''
+        );
+
+        if(isset($data))
+        {
+            $post = new Validation($data);
+
+            $post->pre_filter('trim', TRUE);
+            $post->pre_filter('ucfirst', 'name');
+
+            $post->add_rules('name', 'required', 'length[5,10]','alpha_numeric');
+            $post->add_rules('permission', 'required');
+            $post->add_rules('level', 'required', 'digit');
+            $post->add_rules('date_created', 'required');
+
+            if($post->validate())
+            {
+                $this->group_model->update($group_data);
+                url::redirect('/group');
+            }
+            else
+            {
+                $data = arr::overwrite($data, $post->as_array());
+                $data = arr::overwrite($errors, $post->errors('form_error_messages'));
+                url::redirect('/group');
+            }
+        }            
     }
 }
 ?>

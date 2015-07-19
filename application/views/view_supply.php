@@ -18,23 +18,23 @@
 <fieldset><fieldset>
 <legend><h2>Item Information</h2></legend>
 <label>Acquired Date: </label>
-    <input type="date" id="date_acquired" class="width-25" name="date_acquired" value=<?=$supply->date_acquired;?> required disabled>
+    <input type="date" id="date_acquired" class="width-25" name="date_acquired" value=<?=$supply->date_acquired;?> required >
 <label>Hardware Type:</label>
-    <input type="text" id="hardware_type" class="width-25" name="hardware_type" value=<?=$supply->hardware_type?> required disabled>
+    <input type="text" id="hardware_type" class="width-25" name="hardware_type" value=<?=$supply->hardware_type?> required >
 <br/><br/>
 <label>Product Name:</label>
-    <input type="text" id="item" class="width-25" name="item" value=<?=$supply->item?> required disabled>
+    <input type="text" id="item" class="width-25" name="item" value=<?=$supply->item?> required >
 
 <label>Manufacturer:</label>
-    <input type="text" id="manufacturer" class="width-25" name="manufacturer" value=<?=$supply->manufacturer?> required disabled>
+    <input type="text" id="manufacturer" class="width-25" name="manufacturer" value=<?=$supply->manufacturer?> required >
 <br/><br/>
 <label>Stocks Available:</label>
-    <input type="number" id="number_of_supply" class="width-25" name="number_of_supply" value=<?=$supply->number_of_supply?> min="1" required disabled>
+    <input type="number" id="number_of_supply" class="width-25" name="number_of_supply" value=<?=$supply->number_of_supply?> min="1" required >
 <label>Price:</label>
-    <input type="number" id="price" class="width-25" name="price" value=<?=$supply->price?> min="15" required disabled>
+    <input type="number" id="price" class="width-25" name="price" value=<?=$supply->price?> min="15" required >
 <br/><br/>
 <label>Product Description:</label>
-<textarea id ="" name="description" disabled><?=$supply->description?></textarea>
+<textarea id ="" name="description" ><?=$supply->description?></textarea>
 <br/>
 <input type="submit" id="submit" class="btn" value="Submit" />
 <button id="edit" class="btn">Edit</button>
@@ -63,13 +63,13 @@ var supply = {
         $("#edit").click(function(){
             $("#edit").hide();
             $("#submit").show();
-            $("#date_acquired").prop('disabled', false);
-            $("#hardware_type").prop('disabled', false);
-            $("#item").prop('disabled', false);
-            $("#manufacturer").prop('disabled', false);
-            $("#number_of_supply").prop('disabled', false);
-            $("#price").prop('disabled', false);
-            $("#description").prop('disabled', false);
+            $("#date_acquired").hide();
+            $("#hardware_type").hide();
+            $("#item").hide();
+            $("#manufacturer").hide();
+            $("#number_of_supply").hide();
+            $("#price").hide();
+            $("#description").hide();
         });
     }
 }

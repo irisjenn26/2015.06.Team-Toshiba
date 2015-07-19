@@ -1,6 +1,7 @@
 <h3> Request </h3>
     <div>
-    <?php foreach($request_data as $request)
+    <?php 
+    foreach($request_data as $request)
                 {
                     $request->date_requested;
                     $request->date_needed;

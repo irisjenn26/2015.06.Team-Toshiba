@@ -10,13 +10,15 @@
                         <?php echo form::input('username'); ?>
                         <label>Password:</label>
                         <?php echo form::password('password'); ?>
+                        <br/><br/>
+                        <p><input type="submit" id="submit" value="Login">&nbsp
+                        <?php echo html::anchor('/client', 'sign up');?>
                         <br/>
-                        <p><input type="submit" id="submit" value="Login"></p>
-                        <?php 
-                        $error = "";
+                        <?php echo html::anchor('/login/pass','Forgot Password?'); ?></p>
+                        <?php $error = "";
                         echo $error; ?>
                 <?php echo form::close_fieldset();
                       echo form::close(); 
-                      echo html::anchor('../user/show_client', 'sign up')?>
+                    ?>
             </div>
         </div>

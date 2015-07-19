@@ -16,8 +16,7 @@ function __construct(){
    //load Javascript files array.
    $this->template->styles .= html::stylesheet( array ( '/media/css/jquery-ui.css',
                                                         '/media/css/jquery.dataTables.css',
-                                                        'media/css/jquery.lightbox-0.5.css',
-                                                        'media/css/jquery.fancybox.css'),
+                                                        'media/css/lightbox.css'),
 											                          array ( 'screen',
                                                         'screen',
                                                         'screen'),
@@ -25,12 +24,7 @@ function __construct(){
    // Load Javascript files array.
    $this->template->scripts .= html::script( array ( 'media/js/jquery-ui.js',
                                                      'media/js/jquery.dataTables.js',
-                                                     'media/js/jquery.lightbox-0.5.js',
-                                                     'media/js/jquery.fancybox.js',
-                                                     'media/js/jquery.fancybox-buttons.js',
-                                                     'media/js/jquery.fancybox-media.js',
-                                                     'media/js/jquery.fancybox-thumbs.js',
-                                                     'media/js/jquery.mousewheel-3.0.6.pack.js'), 
+                                                     'media/js/lightbox.js'), 
                                              FALSE);
    // Get current session information.
    $this->session = Session::instance()->get();

@@ -6,14 +6,16 @@ class Supply_Controller extends Private_Template_Controller
     private $request_model;
     private $supplies_model;
     private $sales_model;
+    private $manufacturer_model;
 
     public function __construct()
     {
         parent::__construct();
-            $this->supply_model  = new Supply_Model();
-            $this->request_model = new Request_Model();
-            $this->sales_model   = new Sales_Model();
-			//$this->supplies_model = new Tbl_Supply_Model();
+            $this->supply_model       = new Supply_Model();
+            $this->request_model      = new Request_Model();
+            $this->sales_model        = new Sales_Model();
+			$this->manufacturer_model = new Manufacturer_Model();
+            //$this->supplies_model = new Tbl_Supply_Model();
             
     }
     public function index()
@@ -49,35 +51,126 @@ public function edit($id)
     {   
         $this->auto_render = FALSE;
               
-        $data_supply = array(
+        $data = array(
             'date_acquired'     =>  $this->input->post('date_acquired'),
             'number_of_supply'  =>  $this->input->post('number_of_supply'), 
-            'hardware_type'     =>  $this->input->post('hardware_type'),
+            //'hardware_type'     =>  $this->input->post('hardware_type'),
             'item'              =>  $this->input->post('item'),
-            'manufacturer'      =>  $this->input->post('manufacturer'),
+            'manufacturer_id'   =>  $this->input->post('manufacturer'),
             'description'       =>  $this->input->post('description'),
             'status'            =>  $this->input->post('status'),  
-            'price'             =>  $this->input->post('price')
+            'price'             =>  $this->input->post('price'),
+            'delstatus'         =>  'true'
         );
-        $this->supply_model->create($data_supply);
+        $data = array(
+            'date_acquired'     =>  '',
+            'number_of_supply'  =>  '', 
+            //'hardware_type'     =>  '',
+            'item'              =>  '',
+            'manufacturer_id'   =>  '',
+            'description'       =>  '',
+            'status'            =>  '',  
+            'price'             =>  ''      
+        );
+        if(isset($data))
+        {
+            $post = new Validation($data);
+
+            $post->pre_filter('trim', TRUE);
+            $post->pre_filter('ucfirst', 'item');
+
+            $post->add_rules('date_acquired', 'required');
+            $post->add_rules('number_of_supply', 'required', 'numeric');
+            //$post->add_rules('hardware_type', 'required');
+            $post->add_rules('item', 'required', 'alpha_numeric');
+            $post->add_rules('manufacturer_id', 'required');
+            $post->add_rules('description', 'required', 'length[5,500]');
+            $post->add_rules('status', 'required');
+            $post->add_rules('price', 'required', 'numeric');
+       
+            if($post->validate())
+            {
+                $this->supply_model->create($data_supply);
+                url::redirect('supply');             
+            }
+            else
+            {
+                $data = arr::overwrite($data, $post->as_array());
+                $data = arr::overwrite($errors, $post->errors('form_error_messages'));
+                url::redirect('validate');
+            }
+        }
+
+       
+    }
+
+    public function create_manufacturer()
+    {
+        $this->auto_render = FALSE;
+        $manufacturer = $this->input->post('manufacturer_add');
+        $this->manufacturer_model->create($manufacturer);
+        url::redirect('supply');
+    }
+
+    public function create_hardware_type()
+    {
+        $this->auto_render = FALSE;
+        $hard_ware = $this->input->post('hard_ware');
+        $this->manufacturer_model->create($hard_ware);
         url::redirect('supply');
     }
 
     public function update($id)
     {   
-            $data_supply = array(
+        $data = array(
             'date_acquired'     =>  $this->input->post('date_acquired'),
             'number_of_supply'  =>  $this->input->post('number_of_supply'), 
-            'hardware_type'     =>  $this->input->post('hardware_type'),
+            //'hardware_type'     =>  $this->input->post('hardware_type'),
             'item'              =>  $this->input->post('item'),
-            'manufacturer'      =>  $this->input->post('manufacturer'),
+            'manufacturer_id'   =>  $this->input->post('manufacturer'),
             'description'       =>  $this->input->post('description'),
             'status'            =>  $this->input->post('status'),  
             'price'             =>  $this->input->post('price')
         );
-            
-        $this->supply_model->update($id,$data_supply);
-        url::redirect('supply');
+        $data = array(
+            'date_acquired'     =>  '',
+            'number_of_supply'  =>  '', 
+            //'hardware_type'     =>  '',
+            'item'              =>  '',
+            'manufacturer_id'   =>  '',
+            'description'       =>  '',
+            'status'            =>  '',  
+            'price'             =>  ''      
+        );
+        if(isset($data))
+        {
+            $post = new Validation($data);
+
+            $post->pre_filter('trim', TRUE);
+            $post->pre_filter('ucfirst', 'item');
+
+            $post->add_rules('date_acquired', 'required');
+            $post->add_rules('number_of_supply', 'required', 'numeric');
+            //$post->add_rules('hardware_type', 'required');
+            $post->add_rules('item', 'required', 'alpha_numeric');
+            $post->add_rules('manufacturer_id', 'required');
+            $post->add_rules('description', 'required', 'length[5,500]');
+            $post->add_rules('status', 'required');
+            $post->add_rules('price', 'required', 'numeric');
+       
+            if($post->validate())
+            {
+                $this->supply_model->update($id,$data_supply);
+                url::redirect('supply');            
+            }
+            else
+            {
+                $data = arr::overwrite($data, $post->as_array());
+                $data = arr::overwrite($errors, $post->errors('form_error_messages'));
+                url::redirect('supply');
+            }
+        }    
     }
+    
 }
 ?>

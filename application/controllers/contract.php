@@ -36,7 +36,8 @@ class Contract_Controller extends Private_Template_Controller
         $contract_data = array(
             'date_start'    =>  $this->input->post('date_start'),
             'date_end'      =>  $this->input->post('date_end'), 
-            'contract_path' =>  $this->input->post('contract_path')
+            'contract_path' =>  $this->input->post('contract_path'),
+            'delstatus'         =>  'true'
         );
         $this->contract_model->create($contract_data);
         url::redirect('/contract');

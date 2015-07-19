@@ -15,7 +15,7 @@ class User_Model extends Model {
 			$this->group_table = 'tbl_groups';
 		}
 
-		public function create_user($data_user)
+		public function create_user($data)
 		{
 			$this->db->insert($this->user_table, $data_user);
 		}
@@ -34,12 +34,27 @@ class User_Model extends Model {
     	{
 	        $this->db->where('id', $id);
 	        $query = $this->db->get($this->user_table);
-        return $query->result_array();
+        	return $query->result_array();
     	}
     	
         public function update($id, $data)
     	{
         	$this->db->update($this->user_table, $data, array('id' => $id));
+    	}
+
+    	public function update_comp($id, $data_comp)
+    	{
+    		$this->db->update($this->comp_table, $data, array('id' => $id));
+    	}
+
+    	public function update_info($id,$data_info)
+    	{
+    		$this->db->update($this->info_table, $data, array('id' => $id));
+    	}
+
+    	public function update_password($id,$email)
+    	{
+    		$this->db->update($this->user_table, $email, array('id' => $id));
     	}
 		
         public function get_users() 
@@ -49,14 +64,5 @@ class User_Model extends Model {
 			$this->db->join($this->group_table, 'tbl_groups.id', 'tbl_users.group_id');
 	        $query = $this->db->get();
 	        return $query->result_array();
-    	}
-
-    	public function get_permissions($group_id)
-    	{
-    		$this->db->select('tbl_groups.permission');
-    		$this->db->from($this->group_table);
-    		$this->db->where('tbl_groups.id' == $group_id);
-    		$query = $this->db->get();
-    		return $query->result_array();
     	}
 }

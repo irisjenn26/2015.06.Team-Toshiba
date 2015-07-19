@@ -19,8 +19,8 @@ class Dashboard_Controller extends Private_Template_Controller {
         $monthly_income = $this->month->get_monthly_income(date("Y/m/d"));
         $yearly_income  = $this->year->get_yearly_income(date("Y/m/d"));
 
-        $this->template->title = 'Merchantilia';
-        $this->template->scripts = html::script('media/js/dashboard.js');
+        $this->template->title         = 'Merchantilia';
+        $this->template->scripts       = html::script('media/js/dashboard.js');
         $this->template->body->content = View::factory('dashboard')
                                        ->set('total_income',$total_income)
                                        ->set('monthly_income',$monthly_income)
